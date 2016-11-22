@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:id="@+id/ParentLinear_DeviceSyncFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="@dimen/base_parent_padding" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imgSynkProfile"
+                android:layout_width="80dp"
+               android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+               
+                android:src="@drawable/user_male" />
+
+            <com.custom.view.MyTextView
+                android:id="@+id/UsersName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="@dimen/uprofile_username_margin_left"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@string/users_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/uprofile_username_textsize" >
+            </com.custom.view.MyTextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/CongratulationsText_DeviceSyncFragment"
+            style="@style/UserProfileTextStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:singleLine="false"
+            android:text="Congratulations! You have successfully synced your device."
+            android:textColor="#911257"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" >
+
+            <ImageView
+                android:id="@+id/profileImage"
+                style="@style/UserInfo_InputBoxStyle"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/DeviceName_DeviceSyncFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Scale"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/DeviceSyncStatus_DeviceSyncFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Not Synced"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/DeviceSyncImg_DeviceSyncFragment"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/devices1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/GetStartedText"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@color/home_pink_select_dark"       
+        android:gravity="center"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        android:textSize="20sp" >
+    </TextView>
+    <!--  android:background="@color/royal_blue" Get Started -->
+
+</LinearLayout>

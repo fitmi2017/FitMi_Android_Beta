@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_lin_layroot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <include layout="@layout/include_calendar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameParent_HomeFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <com.fitmi.customviews.CustomScrollView
+            android:id="@+id/ScrollView_HomeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="visible" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="22"
+                                android:background="@color/home_green_select_dark"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="43dp"
+                                    android:layout_height="43dp"
+                                    android:layout_gravity="top|center_horizontal"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/food" />
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/txtViewtotalIntake"
+                                    style="@style/HomeTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:text="0 cal" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="73" >
+
+                                <LinearLayout
+                                    android:id="@+id/ParentLinear1_HomeFragment"
+                                    android:layout_width="190dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="6dp" >
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/txtViewtotalCalory"
+                                        style="@style/HomeUnitTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:text="0" />
+
+                                    <com.custom.view.MyTextView
+                                        style="@style/HomeHeaderTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="left"
+                                        android:text="cal"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/AddFoodLogging"
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="center_vertical"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical" >
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameHomeFoodGraph"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/home_green_select_light" >
+
+                                <TextView
+                                    android:id="@+id/txtviewHomeFoodGraph"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/home_green_select_dark" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!--
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_gravity="bottom"
+                            android:background="@color/light_grey"
+                            android:orientation="vertical" 
+                            android:visibility="gone">
+                        </LinearLayout>
+                        -->
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/FoodLogging_AlphaLinear"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:alpha="0.5"
+                        android:background="@color/white"
+                        android:orientation="vertical" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="22"
+                                android:background="@color/home_pink_select_dark"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="43dp"
+                                    android:layout_height="43dp"
+                                    android:layout_gravity="top|center_horizontal"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/activity2" />
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/txtViewTotalburn"
+                                    style="@style/HomeTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:text="0 cal" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="73" >
+
+                                <LinearLayout
+                                    android:id="@+id/ParentLinear2_HomeFragment"
+                                    android:layout_width="190dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="6dp" >
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/totalCaloryBurn"
+                                        style="@style/HomeUnitTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:text="0" />
+
+                                    <com.custom.view.MyTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="left"
+                                        android:singleLine="true"
+                                        android:text="cal"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/AddActivity"
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="center_vertical"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical" >
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameHomeActivityGraph"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/home_pink_select_light" >
+
+                                <TextView
+                                    android:id="@+id/txtHomeActivityGraph"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/home_pink_select_dark" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Activity_AlphaLinear"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:alpha="0.5"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="22"
+                                android:background="@color/home_navyblue_select_dark"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="43dp"
+                                    android:layout_height="43dp"
+                                    android:layout_gravity="top|center_horizontal"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/scale1" />
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/txtViewTotalWeight"
+                                    style="@style/HomeTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:text="0 lb" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="73" >
+
+                                <LinearLayout
+                                    android:id="@+id/ParentLinear3_HomeFragment"
+                                    android:layout_width="190dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="6dp" >
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/txtvWeight"
+                                        style="@style/HomeUnitTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:text="0" />
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/txtvWeightunit"
+                                        style="@style/HomeHeaderTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="left"
+                                        android:text="lb"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/AddWeight"
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="center_vertical"
+                                    android:text="+"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp"
+                                    android:visibility="gone" />
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical" >
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameHomeWeightGraph"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/home_navyblue_select_light" >
+
+                                <TextView
+                                    android:id="@+id/txtHomeWeightGraph"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/home_navyblue_select_dark" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Weight_AlphaLinear"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:alpha="0.5"
+                        android:background="@color/white"
+                        android:orientation="vertical" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="22"
+                                android:background="@color/home_orange_select_dark"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="43dp"
+                                    android:layout_height="43dp"
+                                    android:layout_gravity="top|center_horizontal"
+                                    android:layout_marginTop="35dp"
+                                    android:src="@drawable/blood_pressure" />
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/txtViewBlodPreser"
+                                    style="@style/HomeTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:text="Normal" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="73" >
+
+                                <LinearLayout
+                                    android:id="@+id/ParentLinear4_HomeFragment"
+                                    android:layout_width="190dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical" >
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="6dp" >
+
+                                        <com.custom.view.MyTextView
+                                            android:id="@+id/txtViewSys"
+                                            style="@style/HomeUnitTextStyle"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="left"
+                                            android:text="0" />
+
+                                        <com.custom.view.MyTextView
+                                            style="@style/HomeHeaderTextStyle"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="15dp"
+                                            android:gravity="left"
+                                            android:text="sys"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingLeft="10dp" >
+
+                                        <com.custom.view.MyTextView
+                                            android:id="@+id/txtViewDia"
+                                            style="@style/HomeUnitTextStyle"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="left"
+                                            android:text="0" />
+
+                                        <com.custom.view.MyTextView
+                                            style="@style/HomeHeaderTextStyle"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="15dp"
+                                            android:gravity="left"
+                                            android:text="dia"
+                                            android:textSize="16sp" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/AddBloodPressure"
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="center_vertical"
+                                    android:text="+"
+                                    android:textColor="@color/home_orange_select_dark"
+                                    android:textSize="20sp"
+                                    android:visibility="invisible" />
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical" >
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameHomeBpGraph"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/home_orange_select_light" >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical" >
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1" >
+
+                                        <TextView
+                                            android:id="@+id/txtHomeBpGraphSys"
+                                            android:layout_width="65dp"
+                                            android:layout_height="0dp"
+                                            android:layout_gravity="center"
+                                            android:background="@color/home_orange_select_dark" />
+                                    </FrameLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="2dp"
+                                        android:background="@color/light_grey"
+                                        android:orientation="vertical" >
+                                    </LinearLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1" >
+
+                                        <TextView
+                                            android:id="@+id/txtHomeBpGraphDia"
+                                            android:layout_width="65dp"
+                                            android:layout_height="0dp"
+                                            android:layout_gravity="bottom"
+                                            android:background="@color/home_orange_select_dark" />
+                                    </FrameLayout>
+                                </LinearLayout>
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/BloodPressure_AlphaLinear"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:alpha="0.5"
+                        android:background="@color/white"
+                        android:orientation="vertical" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="22"
+                                android:background="@color/home_deepblue_select_dark"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="43dp"
+                                    android:layout_height="43dp"
+                                    android:layout_gravity="top|center_horizontal"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/sleep" />
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/txtViewSleep"
+                                    style="@style/HomeTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:text="0 hr" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="73" >
+
+                                <LinearLayout
+                                    android:id="@+id/ParentLinear5_HomeFragment"
+                                    android:layout_width="190dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="6dp" >
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/totalSleepHome"
+                                        style="@style/HomeUnitTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:text="0" />
+
+                                    <com.custom.view.MyTextView
+                                        style="@style/HomeHeaderTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="left"
+                                        android:text="hr"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/AddSleep"
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:gravity="center_vertical"
+                                    android:text="+"
+                                    android:textColor="@color/home_deepblue_select_dark"
+                                    android:textSize="20sp"
+                                    android:visibility="invisible" />
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical" >
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameHomeSleepGraph"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/home_deepblue_select_light" >
+
+                                <TextView
+                                    android:id="@+id/txtHomeSleepGraph"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/home_deepblue_select_dark" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Sleep_AlphaLinear"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:alpha="0.5"
+                        android:background="@color/white"
+                        android:orientation="vertical" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/waterFrameLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="130dp"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="22"
+                                android:background="@color/home_lightgreen_select_dark"
+                                android:orientation="vertical" >
+
+                                <ImageView
+                                    android:layout_width="43dp"
+                                    android:layout_height="43dp"
+                                    android:layout_gravity="top|center_horizontal"
+                                    android:layout_marginTop="25dp"
+                                    android:src="@drawable/water1" />
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/txtViewWater"
+                                    style="@style/HomeTextStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:text="0 cups" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="73" >
+
+                                <LinearLayout
+                                    android:id="@+id/ParentLinear6_HomeFragment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingLeft="6dp" >
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/homeCupValue"
+                                        style="@style/HomeUnitTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:text="0" />
+
+                                    <com.custom.view.MyTextView
+                                        style="@style/HomeHeaderTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="left"
+                                        android:text="cups"
+                                        android:textSize="16sp" />
+
+                                    <com.custom.view.MyTextView
+                                        android:id="@+id/homeOzValue"
+                                        style="@style/HomeUnitTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="left"
+                                        android:text="0" />
+
+                                    <com.custom.view.MyTextView
+                                        style="@style/HomeHeaderTextStyle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="15dp"
+                                        android:gravity="left"
+                                        android:text="oz"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:id="@+id/AddWater"
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="+"
+                                    android:textColor="@color/home_lightgreen_select_dark"
+                                    android:textSize="20sp"
+                                    android:visibility="invisible" />
+
+                                <LinearLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/light_grey"
+                                    android:orientation="vertical" >
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frameHomeWaterGraph"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5"
+                                android:background="@color/home_lightgreen_select_light" >
+
+                                <TextView
+                                    android:id="@+id/txtHomeWaterGraph"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_gravity="bottom"
+                                    android:background="@color/home_lightgreen_select_dark" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/Water_AlphaLinear"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:alpha="0.5"
+                        android:background="@color/white"
+                        android:orientation="vertical" />
+                </FrameLayout>
+            </LinearLayout>
+        </com.fitmi.customviews.CustomScrollView>
+
+        <RelativeLayout
+            android:id="@+id/CircularMenuHolder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+     
+            android:gravity="center_vertical"
+            android:visibility="visible" >
+
+            <include
+                android:id="@+id/CircularMenuView"
+                android:layout_width="wrap_content"
+                android:layout_height="260dp"
+               
+                layout="@layout/view_circular_menu" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/view_click"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom" />
+
+</LinearLayout>

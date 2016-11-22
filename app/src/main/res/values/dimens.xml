@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <item name="menuFromDegrees" format="float" type="dimen">180.0</item>
+    <item name="menuToDegrees" format="float" type="dimen">360.0</item>
+
+    <dimen name="menuChildSize">30dp</dimen>
+    <dimen name="user_info_img_width">45dp</dimen>
+    <dimen name="user_info_img_height">45dp</dimen>
+    <dimen name="base_parent_padding">10dp</dimen>
+    <dimen name="remember_me_textsize">14sp</dimen>
+    <dimen name="signin_signup_heading_textsize">25sp</dimen>
+    <dimen name="signin_signup_heading_margin">50dp</dimen>
+    <dimen name="header_back_textsize">40dp</dimen>
+    <dimen name="uprofile_username_textsize">25sp</dimen>
+    <dimen name="uprofile_username_margin_left">10dp</dimen>
+    <dimen name="instument_item_img_width">50dp</dimen>
+    <dimen name="instument_item_img_height">50dp</dimen>
+    <dimen name="instument_item_header_textsize">18sp</dimen>
+    <dimen name="instument_item_subheader_textsize">15sp</dimen>
+    <dimen name="instument_item_arrow_textsize">30sp</dimen>
+    <dimen name="tab_footer_height">50dp</dimen>
+
+</resources>

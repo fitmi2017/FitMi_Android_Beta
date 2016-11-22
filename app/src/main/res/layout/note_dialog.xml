@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="130dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <com.custom.view.MyTextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Enter Notes"
+        android:textColor="@color/black"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/edTextNote"
+        style="@style/UserInfo_InputBoxStyle"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:hint="Note"
+        android:inputType="text"
+        android:layout_marginTop="2dp"
+        android:padding="8dp"
+        android:textSize="15sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:padding="5dp"
+        >
+        <com.custom.view.MyButton       
+            android:id="@+id/saveBtn"    
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"           
+            android:text="@string/save"
+            android:layout_marginRight="1dp"
+             android:background="@drawable/pink_button_bg"
+            android:textStyle="normal" />
+        <com.custom.view.MyButton   
+            android:id="@+id/cancelBtn"        
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"     
+            android:layout_marginLeft="1dp"       
+            android:text="@string/cancel"
+             android:background="@drawable/pink_button_bg"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+</LinearLayout>

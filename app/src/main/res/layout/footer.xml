@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/tab_footer_height"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/HomeLinear_Tab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/royal_blue"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/HomeImg_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:src="@drawable/hometab" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ProfileLinear_Tab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/bg_blue"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ProfileImg_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:src="@drawable/profiletab" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ActivityLinear_Tab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/bg_blue"
+        android:visibility="gone"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/ActivityImg_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:src="@drawable/activitytab" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/HelpLinear_Tab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/bg_blue"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/HelpImg_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:src="@drawable/helptab" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/CalendarLinear_Tab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/bg_blue"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/CalendarImg_Tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:src="@drawable/calendertab" />
+    </LinearLayout>
+
+</LinearLayout>

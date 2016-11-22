@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/roundcorner"
+    android:orientation="vertical"
+    android:padding="6dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:weightSum="100" >
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+             >
+
+            <ImageView
+                android:id="@+id/imgViewBreakfast"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_lightgreen"
+                android:src="@drawable/breakfast"
+                android:padding="10dp"
+                 android:gravity="center"
+                android:scaleType="centerInside" />
+
+        </FrameLayout>
+        
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25" >
+
+            <ImageView
+                android:id="@+id/imgViewLunch"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_lightgreen"
+                android:src="@drawable/lunch"
+                android:padding="10dp"
+                 android:gravity="center"
+                android:scaleType="centerInside" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25" >
+
+            <ImageView
+                android:id="@+id/imgViewDinner"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_lightgreen"
+                android:src="@drawable/dinner" 
+                android:padding="10dp"
+                 android:gravity="center"
+                android:scaleType="centerInside" />
+
+        </FrameLayout>
+        
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25" >
+            
+            <ImageView
+                android:id="@+id/imgViewSnack"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_lightgreen"
+                android:src="@drawable/snack"
+                android:padding="10dp"
+                 android:gravity="center"
+                android:scaleType="centerInside"  />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:text="Save as"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:textSize="16sp" />
+    
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/mealName"
+                    style="@style/UserInfo_InputBoxStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="Enter your meal name or select one"
+                    android:inputType="text" >
+
+                </EditText>
+            </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="100" >
+
+        <Button
+            android:id="@+id/savebtn"
+            style="@style/UserInfo_InputBoxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="50"
+            android:background="@color/transparent"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="#69B4CE" />
+
+        <Button
+            android:id="@+id/cancelbtn"
+            style="@style/UserInfo_InputBoxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="50"
+            android:background="@color/transparent"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/home_pink_select_dark" />
+    </LinearLayout>
+
+</LinearLayout>

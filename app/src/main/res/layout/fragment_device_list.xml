@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+         >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/base_parent_padding"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imgDevListProfile"
+               android:layout_width="80dp"
+               android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/user_male"
+                />
+
+            <TextView
+                android:id="@+id/UsersName"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="@dimen/uprofile_username_margin_left"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@string/users_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/uprofile_username_textsize" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            style="@style/UserProfileTextStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/base_parent_padding"
+            android:singleLine="false"
+            android:text="Choose the FitMi device that you would like to sync."
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="5dp" >
+
+            <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+            <ListView
+                android:id="@+id/DeviceListView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="@null" >
+
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

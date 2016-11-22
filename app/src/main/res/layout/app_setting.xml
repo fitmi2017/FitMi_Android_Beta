@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.custom.view.TextView200XLight
+                android:id="@+id/SubHeading_UnitSettings"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:text="App Settings"
+                android:textColor="@color/black"               
+                android:textStyle="normal" />
+
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="ft"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="20sp"
+                    android:textStyle="normal" >
+                </TextView>
+            </LinearLayout>
+            -->
+<LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+               
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/layout_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/display"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:clickable="false"
+                    android:text="Display"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="normal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:clickable="false"
+                   android:background="@drawable/arrow"
+                    android:textSize="25sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                     android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="ft"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="20sp"
+                    android:textStyle="normal">
+
+                </TextView>
+            </LinearLayout>
+            -->
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

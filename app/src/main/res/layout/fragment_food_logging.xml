@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.85" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="1dp"
+            android:background="@color/home_green_select_dark"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <include layout="@layout/header" />
+
+            <include layout="@layout/include_calendar" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/layoutDailyCaloryEdit"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/home_navyblue_select_dark"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/daily_calories" />
+
+                        <com.custom.view.MyTextView
+                            android:id="@+id/daily_calorie_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/intake_linearlayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/home_green_select_dark"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="30" >
+
+                                <ImageView
+                                    android:id="@+id/food_image"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="3dp"
+                                    android:src="@drawable/food" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="50" >
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/food_calorie_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="1258"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="20" >
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="1dp"
+                                    android:src="@drawable/drop_down" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/light_grey"
+                            android:orientation="vertical" >
+                        </LinearLayout>
+
+                        <com.custom.view.NDSpinner
+                            android:id="@+id/FoodLoggingSpinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="9dp"
+                            android:background="@null"
+                            android:gravity="left"
+                            android:popupBackground="#ffffff"
+                            android:spinnerMode="dropdown" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activity_linearlayout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/home_pink_select_dark"
+                        android:orientation="vertical"
+                        android:visibility="gone" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="100" >
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="30" >
+
+                                <ImageView
+                                    android:id="@+id/activity_image"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="2dp"
+                                    android:src="@drawable/calories_burned" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="50" >
+
+                                <com.custom.view.MyTextView
+                                    android:id="@+id/activity_calorie_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="5dp"
+                                    android:text="958"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="20" >
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_marginRight="2dp"
+                                    android:src="@drawable/drop_down" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <com.custom.view.NDSpinner
+                            android:id="@+id/ActivitySpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="9dp"
+                            android:background="@null"
+                            android:gravity="left"
+                            android:popupBackground="#ffffff"
+                            android:spinnerMode="dropdown" />
+
+                        <!-- android:popupBackground="@android:color/transparent" -->
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@color/bg_blue"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/calories_remaining" />
+
+                        <com.custom.view.MyTextView
+                            android:id="@+id/remainCaloryBurn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <LinearLayout
+                        android:id="@+id/addMealLiner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:visibility="visible" >
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" >
+
+                            <ImageView
+                                android:id="@+id/imgAddMeal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/plus__yellow" />
+
+                            <com.custom.view.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|center"
+                                android:layout_marginLeft="5dp"
+                                android:text="Add a meal"
+                                android:textColor="#D2D2D2"
+                                android:textSize="14sp" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1" >
+
+                            <com.custom.view.MyTextView
+                                android:id="@+id/calorieTotalTop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:text="0 cal"
+                                android:textColor="#000000"
+                                android:textSize="25sp" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/selectMealLiner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:visibility="gone"
+                        android:weightSum="100" >
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="14" >
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="2dp"
+                            android:layout_weight="18" >
+
+                            <FrameLayout
+                                android:layout_width="50dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/circle_green" >
+
+                                <com.custom.view.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="7dp"
+                                    android:text="B"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:id="@+id/imgViewBreakfast"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginLeft="5dp"
+                                 android:layout_marginRight="2dp"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/breakfast" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                             android:layout_marginBottom="2dp"
+                            android:layout_weight="18" >
+
+                            <FrameLayout
+                                android:layout_width="50dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/circle_green" >
+
+                                <com.custom.view.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="7dp"
+                                    android:text="L"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:id="@+id/imgViewLunch"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                 android:layout_marginRight="2dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/lunch" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                             android:layout_marginBottom="2dp"
+                            android:layout_weight="18" >
+
+                            <FrameLayout
+                               android:layout_width="50dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/circle_green" >
+
+                                <com.custom.view.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="7dp"
+                                    android:text="D"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:id="@+id/imgViewDinner"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                 android:layout_marginRight="2dp"
+                                android:padding="10dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/dinner" />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                             android:layout_marginBottom="2dp"
+                            android:layout_weight="18" >
+
+                            <FrameLayout
+                               android:layout_width="50dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/circle_green" >
+
+                                <com.custom.view.MyTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginLeft="7dp"
+                                    android:text="S"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="14sp" />
+                            </FrameLayout>
+
+                            <ImageView
+                                android:id="@+id/imgViewSnack"
+                                android:layout_width="43dp"
+                                android:layout_height="43dp"
+                                android:layout_gravity="right|center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:layout_marginRight="2dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/snack" />
+                        </FrameLayout>
+
+                        
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="14" >
+                        </FrameLayout>
+                        
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/searchMealLiner"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        android:paddingTop="5dp"
+                       >
+
+                        <AutoCompleteTextView
+                            android:id="@+id/SearchEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:drawableLeft="@drawable/search_edittext"
+                            android:drawablePadding="5dp"
+                            android:gravity="center_vertical"
+                            android:hint="What would you like to eat?"
+                            android:imeOptions="actionDone"
+                            android:inputType="textCapSentences"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHint="#D2D2D2"
+                            android:textSize="12sp"
+                            android:visibility="gone" >
+
+                            <requestFocus />
+                        </AutoCompleteTextView>
+
+                        
+                        <ImageView
+                            android:id="@+id/search_img"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                           android:scaleType="fitXY"
+                           android:padding="5dp"
+                           android:layout_marginLeft="10dp"
+                            android:src="@drawable/search_edittext"
+                            android:visibility="visible" />
+                        <EditText
+                            android:id="@+id/inputSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginRight="5dp"
+                           
+                            android:background="@null"
+                        
+                            android:gravity="center_vertical"
+                            android:hint="What would you like to eat?"
+                            android:imeOptions="actionDone"
+                            android:inputType="textCapSentences"
+                            android:paddingLeft="10dp"
+                            android:singleLine="true"
+                            android:textColorHint="#D2D2D2"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/imgspeech"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/mic1"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/barcodeScann"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/barcode"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                 
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/MyBreakfastFrame"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/home_green_select_dark"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:visibility="gone" >
+
+                    <com.custom.view.MyTextView
+                        android:id="@+id/foodTypeTitle"
+                        style="@style/SignIn_SignUp_ButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:background="@color/home_green_select_dark"
+                        android:gravity="center_vertical"
+                        android:text="My Breakfast "
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shadowFrame1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/back_tranparente" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ListBreakfastLinear"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="25dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <com.custom.view.CustomListView
+                android:id="@+id/FoodLoggingListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+            </com.custom.view.CustomListView>
+
+            <com.baoyz.swipemenulistview.SwipeMenuListView
+                android:id="@+id/FoodLoggingListView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/list_autocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone" >
+            </ListView>
+
+            <LinearLayout
+                android:id="@+id/TotalFrame_FoodLogging"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="56dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:id="@+id/tareLayout"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="27dp"
+                            android:background="#FF9900"
+                            android:gravity="center"
+                            android:text="T"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/light_grey"
+                            android:orientation="vertical" >
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="27dp"
+                            android:background="#FF9900"
+                            android:gravity="center"
+                            android:text="M"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                    <com.custom.view.MyTextView
+                        android:id="@+id/totalgram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/tareLayout"
+                        android:text="0 g"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <ImageView
+                        android:id="@+id/favourite"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5dp"
+                        android:background="@drawable/green_star" />
+
+                    <com.custom.view.MyTextView
+                        android:id="@+id/totalCalory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/totalgram"
+                        android:layout_alignBottom="@+id/totalgram"
+                        android:layout_marginRight="17dp"
+                        android:layout_toLeftOf="@+id/favourite"
+                        android:text="0 cal"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </RelativeLayout>
+
+                <!-- adding listview for footer three swipable tab showing food data -->
+
+                <com.baoyz.swipemenulistview.SwipeMenuListView
+                    android:id="@+id/listTotalFrame_FoodLogging"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/light_grey"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_grey"
+            android:orientation="vertical"
+            android:visibility="gone" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shadowFrame"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/back_tranparente" />
+        </LinearLayout>
+
+        <it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer
+            xmlns:my="http://schemas.android.com/apk/res/com.fitmi.initial"
+            android:id="@+id/drawer"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            my:content="@+id/content"
+            my:direction="bottomToTop"
+            my:handle="@+id/frameFavShow" >
+
+            <!-- my:direction="topToBottom" -->
+
+            <include
+                android:id="@id/content"
+                layout="@layout/drawer_content" />
+
+            <FrameLayout
+                android:id="@+id/frameFavShow"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/arrow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/kee_arrow_strate"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/light_grey"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+                </LinearLayout>
+            </FrameLayout>
+        </it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer>
+    </RelativeLayout>
+
+    <com.custom.view.MyButton600SemiBold
+        android:id="@+id/logBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:background="#FF9900"
+        android:text="Log"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <include layout="@layout/include_calendar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!--
+             <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/include_intakebar" />
+        -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/layoutDailyCalory"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/home_navyblue_select_dark"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/daily_calories" />
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/dailyCaloryIntake"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1720"
+                    android:textColor="@color/white"                    
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/intake_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/home_green_select_dark"
+                android:orientation="vertical" >
+
+                <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/food_image"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/food" />
+
+                    <TextView
+                        android:id="@+id/food_calorie_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:text="1258"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+                -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30" >
+
+                        <ImageView
+                            android:id="@+id/food_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:src="@drawable/food" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50" >
+
+                        <com.custom.view.MyTextView
+                            android:id="@+id/food_calorie_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:text="0"
+                            android:textColor="#FFFFFF" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="1dp"
+                            android:src="@drawable/drop_down" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <com.custom.view.NDSpinner
+                    android:id="@+id/FoodLoggingSpinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9dp"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:popupBackground="#ffffff"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_linearlayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@color/home_pink_select_dark"
+                android:orientation="vertical" >
+
+                <!--
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/activity_image"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/calories_burned" />
+
+                    <TextView
+                        android:id="@+id/activity_calorie_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:text="958"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+                -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="30" >
+
+                        <ImageView
+                            android:id="@+id/activity_image"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:src="@drawable/calories_burned" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50" >
+
+                        <com.custom.view.MyTextView
+                            android:id="@+id/activity_calorie_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:text="958"
+                            android:textColor="#FFFFFF" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20" >
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:src="@drawable/drop_down" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/ActivitySpinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9dp"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:popupBackground="#ffffff"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/bg_blue"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/calories_remaining" />
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/remainCalory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="1249"
+                    android:textColor="@color/white"                    
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <EditText
+                android:id="@+id/SearchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_rounded_corner_for_search"
+                android:drawableLeft="@drawable/search_edittext"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="What activity would you like to do?"
+               android:imeOptions="actionDone"
+                android:inputType="textCapSentences"
+                android:paddingLeft="8dp"
+                android:singleLine="true"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/imgVoice"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/mic1" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/barcode"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/MyBreakfastFrame"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@color/home_pink_select_dark"
+            android:paddingLeft="10dp"
+            android:visibility="gone"
+            android:paddingRight="10dp" >
+
+            <TextView
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:text="My Exercises"
+                android:textSize="16sp"
+                android:clickable="false"
+                android:textStyle="normal" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:background="@color/home_pink_select_dark"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ListBreakfastLinear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="visible" >
+<!-- 
+        <ListView
+            android:id="@+id/ActivityListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView> -->
+         <com.baoyz.swipemenulistview.SwipeMenuListView
+        		android:id="@+id/ActivityListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                
+                android:layout_weight="1"/>
+         
+            <ListView
+                android:id="@+id/list_autocomplete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="gone" >
+            </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/TotalFrame_FoodLogging"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:background="@color/home_pink_select_dark"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="visible" >
+
+        <com.custom.view.MyTextView
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical"
+            android:text="Total : "
+            android:textStyle="normal" />
+
+        <com.custom.view.MyTextView
+            android:id="@+id/totalmin"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="0 min"
+            android:visibility="invisible"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="end"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <com.custom.view.MyTextView
+                android:id="@+id/totalcal"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_marginRight="10dp"
+                android:gravity="center_vertical"
+                android:text="0 cal"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+    <!-- 
+    <LinearLayout
+        android:id="@+id/parentHideShow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"       
+        android:orientation="vertical" >
+        
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/RecentActivities"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/home_navyblue_select_dark"
+            android:text="Recent Activities"
+            android:textSize="17sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/MyActivities"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/home_navyblue_select_dark"
+            android:text="My Activities"
+            android:textSize="17sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/RecentListView_ParentLinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/Recent_Activity_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>
+        
+    </LinearLayout> -->
+    
+    <FrameLayout
+        android:id="@+id/frameFavActivityShow"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/home_green_select_dark"
+            android:clickable="false"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="25dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@color/home_green_select_dark"
+            android:clickable="false"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </FrameLayout>
+    
+     <LinearLayout
+         android:id="@+id/favContainer"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_weight="1"
+         android:orientation="vertical"
+         android:visibility="gone" >
+        
+         <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <com.custom.view.MyButton
+            android:id="@+id/RecentActivities"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/home_navyblue_select_dark"
+            android:text="Recent Activities"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <com.custom.view.MyButton
+            android:id="@+id/MyActivities"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/home_navyblue_select_dark"
+            android:text="My Activities"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/RecentListView_ParentLinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/Recent_Activity_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout> 
+     </LinearLayout>
+
+     <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <com.custom.view.MyButton
+            android:id="@+id/RecentActivities"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/home_navyblue_select_dark"
+            android:text="Recent Activities"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <com.custom.view.MyButton
+            android:id="@+id/MyActivities"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/home_navyblue_select_dark"
+            android:text="My Activities"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/RecentListView_ParentLinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/Recent_Activity_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView>
+    </LinearLayout>  -->
+
+<com.custom.view.MyButton
+        android:id="@+id/logBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:background="#FF9900"
+        android:text="Log"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+</LinearLayout>

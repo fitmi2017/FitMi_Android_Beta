@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"   
+    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:id="@+id/flframelayout"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="2dp"
+        
+         >
+
+        <RadioButton
+            android:id="@+id/userInfoSpinnerRadio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"   
+            
+            />
+
+    </FrameLayout>
+
+    <com.custom.view.MyTextView
+        android:id="@+id/userInfoSpinnertext"
+        style="?android:attr/spinnerItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:background="@color/transparent"
+        android:ellipsize="marquee"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:text="text"
+        android:textAlignment="inherit"
+        android:textColor="@color/black"
+         android:clickable="false"
+        android:textSize="16sp" />
+
+</LinearLayout>

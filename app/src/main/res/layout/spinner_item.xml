@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.custom.view.MyTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/spinnerItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:ellipsize="marquee"
+    android:gravity="center"
+    android:singleLine="true"
+    android:textAlignment="inherit"
+    android:textColor="@color/white" />

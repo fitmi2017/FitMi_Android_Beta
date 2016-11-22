@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/FL_ListItemParentLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <!-- <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <com.custom.view.MyTextView
+                android:id="@+id/FoodName_RecentFoodListItem"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="left"
+                android:gravity="bottom"
+                android:text="Food 1"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <com.custom.view.MyTextView
+                android:id="@+id/description"
+                
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="bottom"
+                android:text="Description Of Food"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="normal" />
+
+        </LinearLayout> -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:weightSum="100" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/FoodName_RecentFoodListItem"
+                    style="@style/FoodLogging_List_TextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="left"
+                    android:layout_weight="75"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="Food 1"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+                   <com.custom.view.MyTextView
+                       android:id="@+id/recentfoodListcalory"
+                       style="@style/FoodLogging_List_TextViewStyle"
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="right|center_vertical"
+                       android:layout_weight="25"
+                       android:gravity="right"
+                       android:paddingLeft="2dp"
+                       android:text="243g"
+                       android:textColor="@color/black"
+                       android:textSize="15sp"
+                       android:textStyle="normal" />
+               
+            </LinearLayout>
+
+            <LinearLayout
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="100" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="75"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/recentfoodListGram"
+                    style="@style/FoodLogging_List_TextViewStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_weight="25"
+                    android:gravity="right"
+                    android:paddingLeft="2dp"
+                    android:text="0 g"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+<ImageView
+    android:id="@+id/imageViewFav"
+    android:layout_width="25dp"
+    android:layout_height="25dp"
+    android:layout_marginRight="2dp"
+    android:visibility="gone"
+    android:background="@drawable/green_star" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/plannergridrowid"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textnum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="1"
+        android:clickable="false"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/centerid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:clickable="false"
+        android:visibility="gone"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/foodLogTake"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:clickable="false"
+            android:background="@drawable/lunch1" />
+
+        <ImageView
+            android:id="@+id/activityLogTake"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="5dp"
+            android:clickable="false"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/activity" />
+         </LinearLayout>
+   <LinearLayout
+        android:id="@+id/linlay_id"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center_horizontal"
+        android:clickable="false"
+   
+        android:layout_marginTop="30dp"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal" >
+        
+         <LinearLayout
+             android:id="@+id/linlay_one"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/deep_green"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+                </LinearLayout>
+                
+         <LinearLayout
+               android:id="@+id/linlay_two"
+                    android:layout_width="5dp"
+                    android:layout_height="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/red"
+                    android:clickable="false"
+                    android:orientation="vertical" >
+                </LinearLayout>
+       
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/FL_ListItemParentLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="2dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="2dp"
+            android:paddingLeft="19dp"
+            android:paddingRight="20dp"
+            android:paddingTop="2dp" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:weightSum="100" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/FoodName_FoodLoggingListItem"
+                    style="@style/SignIn_SignUp_ButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="left"
+                    android:layout_weight="80"
+                    android:gravity="center_vertical"
+                    android:text="Food 1"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+                   <com.custom.view.MyTextView
+                       android:id="@+id/foodListcalory"
+                       style="@style/SignIn_SignUp_ButtonStyle"
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_gravity="right|center_vertical"
+                       android:layout_weight="20"
+                       android:gravity="right"
+                      
+                       android:singleLine="true"
+                       android:paddingRight="2dp"
+                       android:text="243 cal"
+                       android:textColor="@color/black"
+                       android:textSize="15sp"
+                       android:textStyle="normal" />
+               
+            </LinearLayout>
+
+            <LinearLayout
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="100" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/foodDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_weight="80"
+                    android:text=""
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+              
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/foodListGram"
+                    style="@style/SignIn_SignUp_ButtonStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_weight="20"
+                    android:paddingLeft="2dp"
+                    android:text="0 g"
+                     android:paddingRight="2dp"
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/icon_toggle"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

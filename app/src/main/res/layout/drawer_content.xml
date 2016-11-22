@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:id="@+id/favContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.custom.view.MyButton
+                android:id="@+id/RecentFoods_FoodLogging"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/home_pink_select_dark"
+                android:text="Recent"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="fill_parent"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <com.custom.view.MyButton
+                android:id="@+id/RecentMeals_FoodLogging"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/home_pink_select_dark"
+                android:text="Favorites"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Recent_Food_Meals_Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <com.custom.view.MyButton
+                android:id="@+id/recentFood"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:background="@color/home_green_deselect_dark"
+                android:text="Food"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <com.custom.view.MyButton
+                android:id="@+id/recentMeal"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:background="@color/home_green_deselect_dark"
+                android:text="Meal"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>  
+
+            <LinearLayout
+                android:id="@+id/intake_linearlayout_recent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/home_green_deselect_dark"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50" >
+
+                        <ImageView
+                            android:id="@+id/food_image_recent"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:src="@drawable/food" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50" >
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/drop_down" />
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <com.custom.view.NDSpinner
+                    android:id="@+id/spinnerRecent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9dp"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:popupBackground="#ffffff"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/Fav_Food_Meals_Menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <com.custom.view.MyButton
+                android:id="@+id/favFood"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:background="@color/home_green_deselect_dark"
+                android:text="Food"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <com.custom.view.MyButton
+                android:id="@+id/favMeal"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:background="@color/home_green_deselect_dark"
+                android:text="Meal"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+   
+
+            <LinearLayout
+                android:id="@+id/intake_linearlayout_fav"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@color/home_green_deselect_dark"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="100" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50" >
+
+                        <ImageView
+                            android:id="@+id/food_image_fav"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:src="@drawable/food" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50" >
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/drop_down" />
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_grey"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <com.custom.view.NDSpinner
+                    android:id="@+id/spinnerFav"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="9dp"
+                    android:background="@null"
+                    android:gravity="left"
+                    android:popupBackground="#ffffff"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/RecentListView_ParentLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/Recent_Food_Meals_ListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </ListView>
+        </LinearLayout>
+        
+        <ListView
+            android:id="@+id/fav_Food_Meals_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="gone" >
+
+            </ListView>    
+        
+    </LinearLayout>
+
+
+</RelativeLayout>

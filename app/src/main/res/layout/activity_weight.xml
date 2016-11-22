@@ -1,0 +1,49 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WeightActivity"
+    tools:ignore="MergeRootFrame"
+    android:background="#FFF"
+    android:orientation="vertical"
+    >
+<FrameLayout
+    android:layout_width="match_parent"
+    android:id="@+id/fragmentParentViewGroup"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:text="weigth"
+
+        android:id="@+id/weightbtn"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:text="planner"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="150dp"
+        android:id="@+id/plannerbtn"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:text="water"
+        android:layout_marginLeft="150dp"
+        android:id="@+id/waterbtn"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:text="Pressure"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/pressurebtn"/>
+    </FrameLayout>
+
+    </FrameLayout>

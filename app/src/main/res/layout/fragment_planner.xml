@@ -1,0 +1,531 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" >
+    </include>
+
+    <include layout="@layout/include_calendar" >
+    </include>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#097F9B" >
+
+            <com.custom.view.MyTextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:text="My Daily Plan"
+                android:textAllCaps="false"
+                android:textColor="#FFF"
+                android:textSize="14dp" />
+
+            <RelativeLayout
+                android:id="@+id/pluslayout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="#B51F6B" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="+"
+                    android:textColor="#FFF"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/donelayout"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="#FF9900"
+                android:visibility="gone" >
+
+                <com.custom.view.MyTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Log"
+                    android:textSize="14dp"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            
+
+           <!--  <LinearLayout
+                android:id="@+id/twocircle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:weightSum="2" >
+
+                <FrameLayout
+                    android:id="@+id/foodtwiceframelayout"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_green"
+                    android:clickable="true" >
+
+                    <ImageView
+                      
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"    
+                        android:clickable="false"                   
+                        android:src="@drawable/food" />
+                    
+                      android:id="@+id/plannerImg"
+                    android:id="@+id/flspinnerimage"
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/activitytwiceframelayout"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle_pink"
+                    android:clickable="true" >
+
+                    <ImageView
+                         
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"  
+                         android:clickable="false"                                  
+                        android:src="@drawable/activity2" />
+                    android:id="@+id/activityImg"
+                </FrameLayout>
+            </LinearLayout> -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/fivelayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="5" >
+
+                    <LinearLayout
+                        android:id="@+id/BreakFastLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                       
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+                            
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerInParent="true"
+                                 android:layout_marginTop="5dp"
+                                 android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/plannerBreakfast"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/breakfast2"
+                                />
+
+                            <com.custom.view.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:textSize="14dp"
+                                android:text="Breakfast"
+                                android:textColor="#000" />
+                        </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/gray" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LunchLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                       
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+                            
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerInParent="true"
+                                 android:layout_marginTop="5dp"
+                                 android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/plannerLunch"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"                                
+                                android:background="@drawable/lunch2" />
+
+                            <com.custom.view.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:text="Lunch"
+                                android:textSize="14dp"
+                                android:textColor="#000" />
+                        </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/gray" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/DinnerLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                       
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+                            
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerInParent="true"
+                                 android:layout_marginTop="5dp"
+                                 android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/plannerDinner"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"                                
+                                android:background="@drawable/dinner1" />
+
+                            <com.custom.view.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:text="Dinner"
+                                android:textSize="14dp"
+                                android:textColor="#000" />
+                        </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/gray" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/SnackLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                        
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+                            
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/plannersnack"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"                                
+                                android:background="@drawable/snack1" />
+
+                            <com.custom.view.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:text="Snack"
+                                android:textSize="14dp"
+                                android:textColor="#000" />
+                        </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/gray" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ActivitiesLinear"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                       
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" >
+                            
+                             <LinearLayout
+                                 android:layout_width="match_parent"
+                                 android:layout_height="wrap_content"
+                                 android:layout_centerInParent="true"
+                                 android:layout_marginTop="5dp"
+                                 android:orientation="horizontal" >
+
+                            <ImageView
+                                android:id="@+id/plannerActivity"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"                                
+                                android:background="@drawable/activity" />
+
+                            <com.custom.view.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:text="Activities"
+                                android:textSize="14dp"
+                                android:textColor="#000" />
+                        </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_alignParentBottom="true"
+                                android:background="#097F9B" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/plannerlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="#097F9B"
+                    android:dividerHeight="1dp"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:listSelector="@android:color/transparent"
+                    android:visibility="gone" >
+
+                </ListView>
+
+                <LinearLayout
+                    android:id="@+id/layoutMonth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="100" >
+
+                    <GridView
+                        android:id="@+id/gridview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"                       
+                        android:background="#097F9B"
+                        android:columnWidth="12dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="1dp"
+                        android:listSelector="@android:color/transparent"
+                        android:numColumns="7"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="1dp"
+                         >
+                    </GridView>
+
+                    <!-- <TextView
+                        android:id="@+id/txtMnthDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="20"
+                        android:background="#FF9900"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:clickable="false"
+                        android:text="&quot;True healthcare reform starts in \n your kitchen, not in Washington &quot;"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/white"
+                        android:visibility="gone" /> -->
+                </LinearLayout>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/twocircle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone" >
+
+                 <LinearLayout
+               
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:weightSum="2" >
+
+                <FrameLayout
+                    android:id="@+id/foodtwiceframelayout"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/circle_green"
+                    android:clickable="true" >
+
+                    <ImageView
+                      
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"    
+                        android:clickable="false"                   
+                        android:src="@drawable/food" />
+                    <!-- 
+                      android:id="@+id/plannerImg"
+                    android:id="@+id/flspinnerimage" -->
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/activitytwiceframelayout"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/circle_pink"
+                    android:clickable="true" >
+
+                    <ImageView
+                         
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"  
+                         android:clickable="false"                                  
+                        android:src="@drawable/activity2" />
+                    <!-- android:id="@+id/activityImg" -->
+                </FrameLayout>
+            </LinearLayout>
+                
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:weightSum="3" >
+
+        <com.custom.view.MyButton
+            android:id="@+id/dailybtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="#B51F6B"
+            android:text="Daily"
+            android:textAllCaps="false"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF" />
+         <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <com.custom.view.MyButton
+            android:id="@+id/weekbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="#D379A6"
+            android:text="Weekly"
+            android:textAllCaps="false"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF" />
+         <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <com.custom.view.MyButton
+            android:id="@+id/monthbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="#D379A6"
+            android:text="Monthly"
+            android:textSize="14dp"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</LinearLayout>

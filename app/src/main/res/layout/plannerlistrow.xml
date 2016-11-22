@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:clickable="false"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/plannerdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="22 august 2015"
+        android:textColor="#000"
+        android:clickable="false"
+        android:textSize="17sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="false"
+        android:orientation="horizontal"
+        android:weightSum="100" >
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:clickable="false"
+            android:layout_weight="20" >
+
+            <ImageView
+                android:id="@+id/imgBreakfast"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                 android:clickable="false"
+                android:background="@drawable/breakfast1" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:clickable="false"
+            android:layout_weight="20" >
+
+            <ImageView
+                android:id="@+id/imgLunch"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                 android:clickable="false"
+                android:background="@drawable/lunch2" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:clickable="false"
+            android:layout_weight="20" >
+
+            <ImageView
+                android:id="@+id/imgDinner"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                 android:clickable="false"
+                android:background="@drawable/dinner1" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:clickable="false"
+            android:layout_weight="20" >
+
+            <ImageView
+                android:id="@+id/imgSnack"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                 android:clickable="false"
+                android:background="@drawable/snack1" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+             android:clickable="false"
+            android:layout_weight="20" >
+
+            <ImageView
+                android:id="@+id/imgActivity"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                 android:clickable="false"
+                android:background="@drawable/activity1" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

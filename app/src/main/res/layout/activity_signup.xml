@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/base_parent_padding" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/signin_signup_heading_margin"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/fitme_icon_three" />
+            <com.custom.view.EditTextHelveticaNeueThin
+                android:id="@+id/firstName"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:hint="@string/firstname"
+                android:inputType="textEmailAddress" >
+            </com.custom.view.EditTextHelveticaNeueThin>
+            <com.custom.view.EditTextHelveticaNeueThin
+                android:id="@+id/lastName"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/lastname"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:inputType="textEmailAddress" >
+            </com.custom.view.EditTextHelveticaNeueThin>
+
+            <com.custom.view.EditTextHelveticaNeueThin
+                android:id="@+id/Email"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/email"
+                android:layout_marginTop="10dp"
+                
+                android:inputType="textEmailAddress" >
+            </com.custom.view.EditTextHelveticaNeueThin>
+
+            <com.custom.view.EditTextHelveticaNeueThin
+                android:id="@+id/Password"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+            
+                android:hint="@string/password"
+                android:inputType="textPassword" >
+            </com.custom.view.EditTextHelveticaNeueThin>
+
+            <com.custom.view.EditTextHelveticaNeueThin
+                android:id="@+id/ConfirmPassword"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:hint="@string/confirm_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword" >
+            </com.custom.view.EditTextHelveticaNeueThin>
+
+            
+            
+            <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:weightSum="100" >
+
+        
+
+        <com.custom.view.MyButtonSinkinSansNineHXBlack
+                android:id="@+id/SignUp_cancel"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="50"
+                 android:layout_marginRight="2dp"
+               
+                android:background="@drawable/pink_button_bg"
+                android:text="Cancel" />
+
+        <com.custom.view.MyButtonSinkinSansNineHXBlack
+                android:id="@+id/SignUp_SignUpActivity"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="50"
+                 android:layout_marginLeft="8dp"
+               
+                android:background="@drawable/pink_button_bg"
+                android:text="@string/sign_up" />
+    </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

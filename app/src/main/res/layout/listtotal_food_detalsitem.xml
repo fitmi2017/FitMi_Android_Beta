@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+      android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+           
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <ImageView
+                android:id="@+id/imgcurrent_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="right"
+                android:src="@drawable/total_weight" />
+
+            <TextView
+                android:id="@+id/total_cuurent_active_wt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="2dp"
+                android:text="0"
+                android:layout_weight="1"
+               android:layout_marginLeft="6dp"
+                android:textSize="20sp" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+         
+            
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+        android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+             android:layout_weight="1"
+            android:paddingTop="5dp" >
+
+            <ImageView
+                
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+               
+                android:layout_gravity="start"
+                
+                android:src="@drawable/total_nutration" />
+
+            <TextView
+                android:id="@+id/total_current_calorie_wt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_gravity="center|right"
+                android:layout_marginRight="2dp"
+                android:text="0"
+                android:layout_weight="1"
+                 android:layout_marginLeft="10dp"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+         android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+             android:layout_weight="1"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <ImageView
+                
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="2dp"
+                android:layout_gravity="right"
+                android:src="@drawable/total_meal" />
+
+            <TextView
+                android:id="@+id/total__wt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 android:layout_gravity="center|right"
+                android:layout_marginRight="2dp"
+                android:text="0"
+                android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey"
+        android:visibility="gone"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

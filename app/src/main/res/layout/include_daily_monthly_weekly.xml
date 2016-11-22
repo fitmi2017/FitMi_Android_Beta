@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center_horizontal"
+        android:weightSum="3">
+
+        <Button
+            android:id="@+id/dailybtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#B51F6B"
+            android:text="Daily"
+            android:textAllCaps="false"
+
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/weekbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:layout_weight="1"
+            android:background="#D379A6"
+            android:text="Weekly"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/monthbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#D379A6"
+            android:text="Monthly"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+

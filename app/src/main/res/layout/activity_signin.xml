@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/base_parent_padding" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/signin_signup_heading_margin"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/fitme_icon_three" />
+            <ImageView
+                android:id="@+id/imageview_profiletest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/signin_signup_heading_margin"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/fitme_icon_three" 
+                />
+
+            <com.custom.view.EditText200XLight
+                android:id="@+id/Email"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:hint="@string/username"
+                android:text=""
+                android:inputType="textEmailAddress" >
+
+            </com.custom.view.EditText200XLight>
+
+            <com.custom.view.EditText200XLight
+                android:id="@+id/Password"
+                style="@style/SignIn_SignUp_InputBoxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:text=""
+                android:inputType="textPassword" >
+            </com.custom.view.EditText200XLight>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" >
+
+                <com.custom.view.CheckBoxHelveticaRegular
+                    android:id="@+id/checkBoxSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkcon"
+                    android:paddingLeft="5dp"
+                    
+                    android:text="@string/remember_me"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/remember_me_textsize" />
+
+                <com.custom.view.TextViewHelveticaRegular
+                    android:id="@+id/ForgotPassword_SignInActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|center_vertical"
+                    android:text="@string/forgot_your_password"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/remember_me_textsize" />
+            </FrameLayout>
+
+            <com.custom.view.MyButtonSinkinSansNineHXBlack
+                android:id="@+id/SignIn_SignInActivity"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/pink_button_bg"
+                android:text="@string/log_in" />
+
+            <com.custom.view.MyButtonSinkinSansNineHXBlack
+                android:id="@+id/SignUp_SignInActivity"
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/pink_button_bg"
+                android:text="@string/sign_up" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

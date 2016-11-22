@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="@dimen/base_parent_padding" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageViewProfile"
+               android:layout_width="80dp"
+               android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                
+                android:src="@drawable/user_male" />
+
+            <com.custom.view.MyTextView
+                android:id="@+id/UsersName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="@dimen/uprofile_username_margin_left"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@string/users_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/uprofile_username_textsize" >
+            </com.custom.view.MyTextView>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="5dp" >
+
+                    <!--
+                <ListView
+                    android:id="@+id/InstrumentsListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:divider="@null"
+                    android:fadeScrollbars="false" >
+
+                </ListView>
+                    -->
+
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                          android:visibility="gone"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/light_grey_inputbox_bg" >
+
+                                <ImageView
+                                    android:id="@+id/img_weightscale"
+                                    android:layout_width="@dimen/instument_item_img_width"
+                                    android:layout_height="@dimen/instument_item_img_height"
+                                    android:adjustViewBounds="true"
+                                   android:layout_centerVertical="true"
+                                    android:src="@drawable/fat_scale"
+                                     android:padding="5dp"
+                                    android:scaleType="fitXY" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lay_weightscale"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="5dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Weight Scale"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/instument_item_header_textsize" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Synced"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/instument_item_subheader_textsize" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--
+             <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:text=">"
+            android:textColor="@color/dark_grey"
+            android:textSize="30sp" />
+                        -->
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/arrow"
+                            android:clickable="false"
+                            android:textSize="25sp" />
+                    </FrameLayout>
+              <!--    hidden temp avinash pedo and weight scale both -->
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                          android:visibility="gone"
+                        android:background="@color/light_grey"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                          android:visibility="gone"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            
+                            android:orientation="horizontal" >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/light_grey_inputbox_bg" >
+
+                                <ImageView
+                                    android:id="@+id/img_pedometer"
+                                    android:layout_width="@dimen/instument_item_img_width"
+                                    android:layout_height="@dimen/instument_item_img_height"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/pedometer"
+                                    android:padding="5dp"
+                                    android:scaleType="fitXY" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lay_pedometer"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="5dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Pedometer"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/instument_item_header_textsize" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Synced"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/instument_item_subheader_textsize" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--
+             <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:text=">"
+            android:textColor="@color/dark_grey"
+            android:textSize="30sp" />
+                        -->
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/arrow"
+                            android:clickable="false"
+                            android:textSize="25sp" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/light_grey"
+                          android:visibility="gone"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal" >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/light_grey_inputbox_bg" >
+
+                                <ImageView
+                                    android:id="@+id/img_kitchenscale"
+                                    android:layout_width="@dimen/instument_item_img_width"
+                                    android:layout_height="@dimen/instument_item_img_height"
+                                    android:adjustViewBounds="true"
+                                     android:padding="5dp"
+                                    android:src="@drawable/food1"
+                                    android:scaleType="fitXY" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:id="@+id/lay_kitchenscale"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:padding="5dp" >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Food Scale"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/instument_item_header_textsize" />
+
+                                <TextView
+                                    android:id="@+id/txt_sync_status"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:gravity="center_vertical"
+                                    android:singleLine="true"
+                                    android:text="Synced"
+                                    android:textColor="@color/dark_grey"
+                                    android:textSize="@dimen/instument_item_subheader_textsize" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!--
+             <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:text=">"
+            android:textColor="@color/dark_grey"
+            android:textSize="30sp" />
+                        -->
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical|right"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/arrow"
+                            android:clickable="false"
+                            android:textSize="25sp" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/light_grey"
+                        android:orientation="vertical" >
+                    </LinearLayout>
+                    <!-- end of instrument -->
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".75"
+                    android:gravity="center_vertical"
+                    android:paddingTop="6dp" >
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <com.custom.view.TextView500Medium
+                            style="@style/UserInfoTextStyle"
+                            android:id="@+id/textbirthday"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/birthday" />
+
+                        <com.custom.view.TextView300Light
+                            android:id="@+id/txtDob"
+                            style="@style/UserInfoTextStyle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="April 12, 1986" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <com.custom.view.TextView500Medium
+                            style="@style/UserInfoTextStyle"
+                            android:id="@+id/textheight"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/height" />
+
+                        <com.custom.view.TextView300Light
+                            android:id="@+id/txtHeight"
+                            style="@style/UserInfoTextStyle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="6\&apos;1&quot;" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <com.custom.view.TextView500Medium
+                            style="@style/UserInfoTextStyle"
+                             android:id="@+id/textweight"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/weight" />
+
+                        <com.custom.view.TextView300Light
+                            android:id="@+id/txtWeight"
+                            style="@style/UserInfoTextStyle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="50kg" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <com.custom.view.TextView500Medium
+                            style="@style/UserInfoTextStyle"
+                             android:id="@+id/textactivity"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/activity_level" />
+
+                        <com.custom.view.TextView300Light
+                            android:id="@+id/txtActivityLevel"
+                            style="@style/UserInfoTextStyle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textStyle="bold"
+                            android:text="Moderate" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <com.custom.view.TextView500Medium
+                            style="@style/UserInfoTextStyle"
+                             android:id="@+id/textgender"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/genderinfo" />
+
+                        <com.custom.view.TextView300Light
+                            android:id="@+id/txtgender"
+                            style="@style/UserInfoTextStyle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:gravity="right"
+                            android:text="1930" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <com.custom.view.TextView500Medium
+                            style="@style/UserInfoTextStyle"
+                             android:id="@+id/textcalorie"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:text="@string/daily_calorie_intake" />
+
+                        <com.custom.view.TextView300Light
+                            android:id="@+id/txtDailyCalorytake"
+                            style="@style/UserInfoTextStyle"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="1930" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <com.custom.view.MyButton
+            android:id="@+id/Logout_UserProfile"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/pink_button_bg"
+            android:text="@string/logout"
+            android:textStyle="normal" />
+
+        <com.custom.view.MyButton
+            android:id="@+id/EditProfile_UserProfile"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/royal_blue_button_bg"
+            android:text="@string/edit_profile"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+</LinearLayout>

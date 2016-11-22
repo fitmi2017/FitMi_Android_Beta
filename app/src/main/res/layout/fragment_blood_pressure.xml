@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF"
+    android:layout_height="match_parent" tools:context="com.fitmi.fragments.WeightSettingsFragment">
+
+    <include layout="@layout/header"></include>
+
+    <include layout="@layout/include_calendar"></include>
+    <com.custom.view.MyTextView
+        android:id="@+id/textSeparator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:paddingTop="8dp"
+        android:paddingLeft="12dp"
+        android:paddingBottom="8dp"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:background="#31A4C4"
+        android:textSize="16sp"
+        android:visibility="gone" />
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:listSelector="@android:color/transparent"
+        android:id="@+id/pressurelv"
+        ></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:weightSum="3"
+        android:gravity="center_horizontal">
+        <com.custom.view.MyButton
+            android:id="@+id/dailybtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="#B51F6B"
+            android:text="Daily"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+			android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            />
+        
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+        <com.custom.view.MyButton
+            android:id="@+id/weekbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+			android:textSize="14dp"
+            android:background="#D379A6"
+            android:text="Weekly"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            />
+        
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/light_grey"
+            android:orientation="vertical" >
+        </LinearLayout>
+        <com.custom.view.MyButton
+            android:id="@+id/monthbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="#D379A6"
+            android:text="Monthly"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="14dp"
+            android:textColor="#FFFFFF"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

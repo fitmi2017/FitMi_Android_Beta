@@ -1,0 +1,175 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+
+        <item name="android:windowNoTitle">true</item>
+    
+    </style>
+
+    <style name="SignIn_SignUp_ButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:height">40dp</item>
+    </style>
+
+    
+      <style name="FoodLogging_List_TextViewStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:height">30dp</item>
+    </style>
+    
+    <style name="SignIn_SignUp_InputBoxStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:height">60dp</item>
+        <item name="android:textColorHint">@color/blue_hint</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/light_blue_inputbox_bg</item>
+    </style>
+
+    <style name="HeaderTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    
+    <style name="SleepTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="UserInfo_InputBoxStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:textColorHint">@color/light_grey</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/light_grey_inputbox_bg</item>
+    </style>
+
+       <style name="UserInfo_InputBoxStyleBlack">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@color/black_dialbg</item>
+    </style>
+    
+    <style name="UserInfo_InputBoxStyleSpinner">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:height">35dp</item>
+        <item name="android:textColorHint">@color/light_grey</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/light_grey_inputbox_bg</item>
+    </style>
+
+    <style name="UserInfoHeaderTextStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+    
+    <style name="UserInfoTextStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="UserProfileTextStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="SpinnerItemTextStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="HomeTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="HomeHeaderTextStyle">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="HomeUnitTextStyle">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">45sp</item>
+        <item name="android:singleLine">true</item>
+        
+    </style>
+
+    <style name="calendar_event_style" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#FF6600</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="Recent_ButtonStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:height">40dp</item>
+    </style>
+    
+    
+
+
+</resources>

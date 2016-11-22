@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical"
+    >
+
+<TextView
+            android:id="@+id/fooditemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Blueberry Muffin, Starbucks"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    <!-- <include layout="@layout/footer" /> -->
+
+</LinearLayout>

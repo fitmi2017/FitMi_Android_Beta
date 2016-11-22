@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header" />
+    
+     <include layout="@layout/include_calendar" >
+    </include>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CECECE" >
+    </View>
+
+   <!--  <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" > -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.custom.view.MyTextView
+                android:id="@+id/SubHeading_UnitSettings"
+                style="@style/HeaderTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Sleep"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                 >
+
+                <com.custom.view.MyTextView
+                    style="@style/SleepTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:text="Sleep"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+                <EditText
+                    android:id="@+id/edit_sleep"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true" 
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/light_grey_inputbox_bg"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_toLeftOf="@+id/txt_right"
+                    android:imeOptions="actionDone"
+                    android:singleLine="true" >
+
+                </EditText>
+
+                <com.custom.view.MyTextView
+                    style="@style/SleepTextStyle"
+                    android:id="@+id/txt_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentRight="true"
+                   android:layout_marginRight="20dp"
+                    android:text="hrs"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+            
+            <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:background="#91A3AF" >
+
+        <com.custom.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="My Sleep"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/sleeplv"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:listSelector="@android:color/transparent" >
+    </ListView>
+
+    <com.custom.view.MyButton600SemiBold
+        android:id="@+id/btnSleepLog"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FF9900"
+        android:text="Log"
+        android:textSize="18dp"
+        android:textAllCaps="false"
+        android:textColor="#FFF"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#91A3AF" >
+
+        <com.custom.view.MyTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="Total:"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="14sp" />
+
+        <com.custom.view.MyTextView
+            android:id="@+id/txtTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="0.00 oz"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+        </LinearLayout>
+   <!--  </ScrollView> -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/Save_UserInfo"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/pink_button_bg"
+            android:text="@string/save"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/Cancel_Sleep"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/royal_blue_button_bg"
+            android:text="@string/cancel"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+</LinearLayout>

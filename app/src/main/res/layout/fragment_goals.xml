@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header" />
+
+    <com.custom.view.TextView200XLight
+        android:id="@+id/SubHeading_UnitSettings"
+        android:textSize="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"       
+        android:text="Goals"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+    
+    <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"                               
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+    <ListView
+        android:id="@+id/ListView_Goals"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
+
+</LinearLayout>

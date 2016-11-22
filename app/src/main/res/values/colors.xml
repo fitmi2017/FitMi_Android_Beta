@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="light_grey">#E2E1E3</color>
+    <color name="dark_grey">#4C4C4C</color>
+   <!--  <color name="blue">#094771</color>  -->
+    <color name="red">#D33443</color>
+    <color name="black">#000000</color>
+    <color name="footer_grey">#474747</color>
+    <color name="light_blue">#225783</color>
+    <color name="tab_red">#d33544</color>
+    <color name="home_header_grey">#494949</color>
+    <color name="categories_separator">#aaaaac</color>
+    <color name="categories_text_color">#7c7c7c</color>
+    <color name="video_list_grey_color">#B3B3B4</color>
+    <color name="background_dark">#ffb8860b</color>
+    <color name="background_light">#ffd2b48c</color>
+    <color name="transparent">#00b8860b</color>
+    <color name="light_grey_for_gradient">#00000000</color>
+       <color name="deep_pink">#b4206b</color>
+        <color name="deep_yellow">#f8981d</color>
+         <color name="deep_green">#008f4c</color>
+
+    <!-- AS PER NEW WIREFRAME -->
+
+    <color name="bg_blue">#097F9B</color>
+    <color name="pink_button_bg">#B51F6B</color>
+    <color name="light_blue_inputbox_bg">#78B9C8</color>
+    <color name="royal_blue">#31A4C3</color>
+    <color name="blue_hint">#2D809B</color>
+
+    <!-- Home -->
+
+    <color name="home_green_select_dark">#008F4D</color>
+    <color name="home_green_select_light">#9Ad2B9</color>
+    <color name="home_green_deselect_dark">#BAE1CF</color>
+    <color name="home_green_deselect_light">#E3F2ED</color>
+    <!--  -->
+    <color name="home_pink_select_dark">#B61F6C</color>
+    <color name="home_pink_select_light">#E0A5C3</color>    
+    <color name="home_pink_deselect_dark">#ECC2D8</color>
+    <color name="home_pink_deselect_light">#F7E8EF</color>
+    <!--  -->
+    <color name="home_navyblue_select_dark">#31A4C3</color>
+    <color name="home_navyblue_select_light">#ADDBE8</color>
+    <color name="home_navyblue_deselect_dark">#C8F6E0</color>
+    <color name="home_navyblue_deselect_light">#E7F5F8</color>
+    <!--  -->
+    <color name="home_orange_select_dark">#FE9900</color>
+    <color name="home_orange_select_light">#FFD699</color>
+    <color name="home_orange_deselect_dark">#FFE3BA</color>
+    <color name="home_orange_deselect_light">#FFF4E3</color>
+    <!--  -->
+    <color name="home_deepblue_select_dark">#13415B</color>
+    <color name="home_deepblue_select_light">#A1B3BD</color>
+    <color name="home_deepblue_deselect_dark">#C8F6E0</color>
+    <color name="home_deepblue_deselect_light">#E7F5F8</color>
+    <!--  -->
+    
+    <color name="home_lightgreen_select_dark">#16D1C1</color>
+    <color name="home_lightgreen_select_light">#A2F0E9</color>
+    
+    <color name="userBg">#E6E6E6</color>
+    
+    
+    <!-- For Calendar -->
+    
+    <color name="symptom_color_selected">#003366</color>
+    <color name="reaction_color_selected">#003366</color>
+    <color name="static_text_color">#003366</color>
+    <color name="journal_entry_listitem_text_color">#003366</color>
+    <color name="note_text_disabled">#333333</color>
+    <color name="blue">#0000FF</color>
+    <color name="navy">#6699FF</color>
+    <color name="sky">#0099CC</color>
+    <color name="gray">#808080</color>
+    <color name="lightgray">#e7e7e7</color>
+      <color name="lightgray02">#bfbfbf</color>
+    <color name="dark">#000015</color>
+    <color name="lightgreen">#336666</color>
+    <color name="orrange">#e33d1b</color>
+    <color name="darkorrange">#cc2303</color>
+    
+    <color name="graph_text">#31A4C4</color>
+    
+    <!--  For dialog background -->
+    <color name="black_dialbg">#262626</color>
+
+</resources>

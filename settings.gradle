@@ -1,0 +1,4 @@
+include ':app', ':SGLibrary', ':MPChartLib'
+include ':circleMenuLib'
+include ':zxingLibAndroid'
+include ':libsSwipeMenueListView'

@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/header" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <com.custom.view.TextView200XLight
+                android:id="@+id/SubHeading_UnitSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Units"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+
+            </View>
+
+            <com.custom.view.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Height"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingFt"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                   android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="ft"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingcm"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                     android:textColor="@color/home_navyblue_select_dark"
+                    android:background="@drawable/royal_blue_button_bg"
+                    android:gravity="center"
+                    android:text="cm"
+                   
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <com.custom.view.MyTextView
+              
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Weight"
+                  android:textSize="14sp"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingLb"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/royal_blue_button_bg"
+                    android:gravity="center"
+                    android:text="lb"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingKg"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="kg"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+
+                <com.custom.view.MyTextView
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="st"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <com.custom.view.MyTextView
+               android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Blood Pressure"
+                android:visibility="gone"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingMmhg"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="mmhg"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingKpa"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/royal_blue_button_bg"
+                    android:gravity="center"
+                    android:text="kPa"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                android:orientation="horizontal" >
+
+                <com.custom.view.MyTextView
+                   android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="US"
+                    android:textColor="@color/black"
+                    android:textStyle="normal" />
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingAha"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="AHA"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+
+                <com.custom.view.MyTextView
+                   
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="EU"
+                    android:textColor="@color/black"
+                    android:textStyle="normal" />
+
+                <com.custom.view.MyTextView
+                     android:id="@+id/txtSettingWho"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/royal_blue_button_bg"
+                    android:gravity="center"
+                    android:text="WHO"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+            
+            <com.custom.view.MyTextView
+               android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Food Weight"
+                android:textColor="@color/black"
+                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal" >
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingGm"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/royal_blue_inputbox_bg"
+                    android:gravity="center"
+                    android:text="g"
+                    android:textColor="@color/home_navyblue_select_dark"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+
+                <com.custom.view.MyTextView
+                    android:id="@+id/txtSettingOz"
+                    android:layout_width="90dp"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/royal_blue_button_bg"
+                    android:gravity="center"
+                    android:text="oz"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="normal" >
+                </com.custom.view.MyTextView>
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/light_grey"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <com.custom.view.MyButton
+            android:id="@+id/Save_UserInfo"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/pink_button_bg"
+            android:text="@string/save"
+            android:textStyle="normal" />
+
+        <com.custom.view.MyButton
+            android:id="@+id/Cancel_Units"
+            style="@style/SignIn_SignUp_ButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/royal_blue_button_bg"
+            android:text="@string/cancel"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+</LinearLayout>

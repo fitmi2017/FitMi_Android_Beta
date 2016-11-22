@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="4dp" >
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Please choose option."
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <Button
+            android:id="@+id/btnEdit"
+            style="@style/UserInfo_InputBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:text="Edit"
+            android:textAllCaps="false"
+            android:textColor="#69B4CE" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            style="@style/UserInfo_InputBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:text="Delete"
+            android:textAllCaps="false"
+            android:textColor="#69B4CE" />
+        
+        <Button
+            android:id="@+id/btnCancel"
+            style="@style/UserInfo_InputBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/home_pink_select_dark" />
+    </LinearLayout>
+
+</LinearLayout>

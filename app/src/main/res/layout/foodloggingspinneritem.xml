@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_green_select_dark"
+    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:id="@+id/flframelayout"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/circle_green" >
+
+        <ImageView
+            android:id="@+id/flspinnerimage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:src="@drawable/food" />
+
+    </FrameLayout>
+
+    <com.custom.view.MyTextView
+        android:id="@+id/flspinnertext"
+        style="?android:attr/spinnerItemStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/transparent"
+        android:ellipsize="marquee"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:text="text"
+        android:textAlignment="inherit"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+</LinearLayout>
