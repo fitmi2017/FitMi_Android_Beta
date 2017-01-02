@@ -26,8 +26,8 @@ public class SplashActivity extends BaseActivity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 
-		Intent service = new Intent(this, DeviceSyncService.class);
-		startService(service);
+//		Intent service = new Intent(this, DeviceSyncService.class);
+//		startService(service);
 		
 		new Handler().postDelayed(new Runnable() {
 

@@ -1030,8 +1030,14 @@ public class PlannerFragment extends BaseFragment {
 	//avinash changes
 	
 	}
-	
-/*	@Override
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		getActivity().unregisterReceiver(mBroadcastReceiver);
+		getActivity().unregisterReceiver(mBroadcastReceiverlist);
+	}
+	/*	@Override
 	public void onDestroyView() {
 		
 		System.out.println("onDestriyView is calling in planner fragment");

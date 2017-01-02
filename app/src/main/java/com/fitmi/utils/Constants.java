@@ -17,8 +17,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 public class Constants {
-	
-	
+
+	// 1 Gram = 0.035274 Ounces.
+	public static final String ACTION_SCALE_SUCCESSFULLY_CONNECTED = "ACTION_SCALE_SUCCESSFULLY_CONNECTED";
+	public static boolean isSync = false;
+	public static boolean CheckSyncFirstTime = true;
 	public static String sTempDate = "";
 	public static String sDate = "";
 	public static String postDate = "";	

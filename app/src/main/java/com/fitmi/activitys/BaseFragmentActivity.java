@@ -12,6 +12,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Binder;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
@@ -25,6 +26,11 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import aicare.net.cn.iPabulumLibrary.bleprofile.BleProfileService;
+import aicare.net.cn.iPabulumLibrary.bleprofile.BleProfileServiceReadyActivity;
+import aicare.net.cn.iPabulumLibrary.pabulum.PabulumService;
+import aicare.net.cn.iPabulumLibrary.utils.PabulumBleConfig;
 import butterknife.ButterKnife;
 
 import com.dts.classes.AsyncTaskListener;
@@ -34,10 +40,12 @@ import com.dts.classes.PostObject;
 import com.dts.classes.Pref;
 import com.fitmi.R;
 
-public class BaseFragmentActivity extends FragmentActivity {
+public abstract class BaseFragmentActivity extends BleProfileServiceReadyActivity {
+//	public class BaseFragmentActivity extends BleProfileServiceReadyActivity {
 
 	public CommonFunction mCommonFunction;
 	public Pref _Pref;
+
 	private ProgressDialog _progressDialog;
 
 	@Override
@@ -47,7 +55,6 @@ public class BaseFragmentActivity extends FragmentActivity {
 
 		mCommonFunction = new CommonFunction(BaseFragmentActivity.this);
 		_Pref = new Pref(BaseFragmentActivity.this);
-
 	}
 
 	public void prepareKnives() {
@@ -199,6 +206,8 @@ public class BaseFragmentActivity extends FragmentActivity {
 		// unregisterReceiver(_logoutReceiver);
 		super.onDestroy();
 	}
+
+
 
 	public static void addImageToGallery(final String filePath,
 			final Context context) {

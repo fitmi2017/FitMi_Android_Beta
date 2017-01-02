@@ -91,7 +91,7 @@ public class EntryFoodLoginAdapter extends ArrayAdapter<Item> {
 
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		View v = convertView;
 		//ViewHolder holder = null;
 		final Item i = items.get(position);
@@ -120,7 +120,7 @@ public class EntryFoodLoginAdapter extends ArrayAdapter<Item> {
 				ei = (FitmiFoodLogDAO)i;
 				v = vi.inflate(R.layout.food_logging_listitem, null);	
 				
-				v.setOnClickListener(null);
+
 				v.setOnLongClickListener(null);
 				v.setLongClickable(false);
 				
@@ -129,9 +129,10 @@ public class EntryFoodLoginAdapter extends ArrayAdapter<Item> {
 				
 				LinearLayout fl_ListItemParentLinear = (LinearLayout)v.findViewById(R.id.FL_ListItemParentLinear);				
 				
-				TextView foodDescription = (TextView)v.findViewById(R.id.foodDescription);				
+//				TextView foodDescription = (TextView)v.findViewById(R.id.foodDescription);
+//				foodDescription.setVisibility(View.GONE);
 				
-				TextView foodListcalory = (TextView)v.findViewById(R.id.foodListcalory);				
+				final TextView foodListcalory = (TextView)v.findViewById(R.id.foodListcalory);
 				
 				ImageView imageViewEdit = (ImageView)v.findViewById(R.id.imageViewEdit);
 				
@@ -180,24 +181,41 @@ public class EntryFoodLoginAdapter extends ArrayAdapter<Item> {
 				local.tagObject = ei;
 				local.position = position;
 				local.calTxt = foodListcalory;
-				
+
 				imageViewEdit.setTag(local);
 				imageViewEdit.setOnClickListener(new OnClickListener() {
 					
 					@Override
 					public void onClick(View view) {
 						// TODO Auto-generated method stub
-						
-						LocalClass local = (LocalClass)view.getTag(); 
-						
-						//FitmiFoodLogDAO tagObject = local.tagObject; 
+
+						LocalClass local = (LocalClass)view.getTag();
+
+						//FitmiFoodLogDAO tagObject = local.tagObject;
 						
 						dialog(local);
 						
 					}
 				});
-				
-				
+
+//				v.setOnClickListener(new OnClickListener() {
+//					@Override
+//					public void onClick(View view) {
+//						double cal = 0;
+//						if(!ei.getCalory().equalsIgnoreCase(""))
+//							cal = Double.parseDouble(ei.getCalory());
+//
+//						foodListcalory.setText((int)cal+" cal");
+//
+//						LocalClass local = new LocalClass();
+//
+//						local.tagObject = ei;
+//						local.position = position;
+//						local.calTxt = foodListcalory;
+//
+//						dialog(local);
+//					}
+//				});
 				v.setTag(ei.getMealId());
 			}
 		}

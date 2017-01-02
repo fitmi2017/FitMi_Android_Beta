@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.fitmi.initial"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -43,4 +43,5 @@ dependencies {
     compile project(':zxingLibAndroid')
     compile project(':MPChartLib')
     compile project(':libsSwipeMenueListView')
+    compile files('libs/iPabulumLibrary1.0.1.jar')
 }

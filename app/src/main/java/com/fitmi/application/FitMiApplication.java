@@ -23,7 +23,7 @@ public class FitMiApplication extends Application {
 
 		ACRA.init(this);
 		ACRAReportSender reportSender = new ACRAReportSender("joe08mark@gmail.com", "Host123456");
-		   
+
 		  // register it with ACRA.
 		  ACRA.getErrorReporter().setReportSender(reportSender);
 	}

@@ -97,8 +97,8 @@ public class FoodLoggingAdapter extends BaseAdapter {
 		@InjectView(R.id.FL_ListItemParentLinear)
 		LinearLayout fl_ListItemParentLinear;
 		
-		@InjectView(R.id.foodDescription) 
-		TextView foodDescription;
+//		@InjectView(R.id.foodDescription)
+//		TextView foodDescription;
 		
 		@InjectView(R.id.foodListcalory)
 		TextView foodListcalory;

@@ -1,100 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
 
     <LinearLayout
         android:id="@+id/FL_ListItemParentLinear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="2dp" >
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        >
+
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:id="@+id/LinearLayout1"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="1.0"
             android:orientation="vertical"
-            android:paddingBottom="2dp"
-            android:paddingLeft="19dp"
-            android:paddingRight="20dp"
-            android:paddingTop="2dp" >
+            tools:ignore="RtlHardcoded">
 
-            <LinearLayout
-                android:id="@+id/LinearLayout1"
-                android:layout_width="match_parent"
+            <com.custom.view.MyTextView
+                android:id="@+id/FoodName_FoodLoggingListItem"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="2dp"
-                android:weightSum="100" >
+                android:text="Food 1"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="normal" />
 
-                <com.custom.view.MyTextView
-                    android:id="@+id/FoodName_FoodLoggingListItem"
-                    style="@style/SignIn_SignUp_ButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="left"
-                    android:layout_weight="80"
-                    android:gravity="center_vertical"
-                    android:text="Food 1"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
-
-                   <com.custom.view.MyTextView
-                       android:id="@+id/foodListcalory"
-                       style="@style/SignIn_SignUp_ButtonStyle"
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_gravity="right|center_vertical"
-                       android:layout_weight="20"
-                       android:gravity="right"
-                      
-                       android:singleLine="true"
-                       android:paddingRight="2dp"
-                       android:text="243 cal"
-                       android:textColor="@color/black"
-                       android:textSize="15sp"
-                       android:textStyle="normal" />
-               
-            </LinearLayout>
-
-            <LinearLayout
-                
-                android:layout_width="match_parent"
+            <!--<com.custom.view.MyTextView
+                style="@style/SignIn_SignUp_ButtonStyle"
+                android:id="@+id/foodDescription"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="100" >
+                android:gravity="center_vertical"
+                android:layout_gravity="left|center_vertical"
+                android:text="foodDescription"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:visibility="gone"
+                android:textStyle="normal" />-->
 
-                <com.custom.view.MyTextView
-                    android:id="@+id/foodDescription"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_weight="80"
-                    android:text=""
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
-              
 
-                <com.custom.view.MyTextView
-                    android:id="@+id/foodListGram"
-                    style="@style/SignIn_SignUp_ButtonStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
-                    android:layout_weight="20"
-                    android:paddingLeft="2dp"
-                    android:text="0 g"
-                     android:paddingRight="2dp"
-                    android:gravity="right"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+        </LinearLayout>
 
-            </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:layout_marginBottom="10dp"
+            tools:ignore="RtlHardcoded">
+
+            <com.custom.view.MyTextView
+                android:id="@+id/foodListcalory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="243 cal"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+
+            <com.custom.view.MyTextView
+                android:id="@+id/foodListGram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 g"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
         </LinearLayout>
 
         <ImageView
@@ -107,11 +95,9 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <View
+        android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/light_grey"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:background="@color/light_grey" />
 
 </LinearLayout>

@@ -33,7 +33,7 @@ public class FoodAdapter extends BaseAdapter {
 	FoodLoginModule foodLogObj;
 	MealFavNotify buttonListener;
 
-	public FoodAdapter(Context context, ArrayList<FitmiFoodLogDAO>  dataList,MealFavNotify buttonListener) {
+	public FoodAdapter(Context context, ArrayList<FitmiFoodLogDAO>  dataList, MealFavNotify buttonListener) {
 		// TODO Auto-generated constructor stub
 
 		this.context = context;
@@ -42,6 +42,16 @@ public class FoodAdapter extends BaseAdapter {
 
 		foodLogObj = new FoodLoginModule(context);
 
+	}
+
+	public ArrayList<FitmiFoodLogDAO> getAllData()
+	{
+		return dataList;
+	}
+
+	public void setAllData(ArrayList<FitmiFoodLogDAO> dataList)
+	{
+		this.dataList = dataList;
 	}
 
 	@Override

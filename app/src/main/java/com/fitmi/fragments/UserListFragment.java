@@ -97,19 +97,25 @@ public class UserListFragment extends BaseFragment {//implements UserListCallbac
 			
 				SaveSharedPreferences.saveProfileID(getActivity(), Constants.PROFILE_ID);
 				
-				DeviceListFragment fragment = new DeviceListFragment();
-
-				Bundle bundle = new Bundle();
-				bundle.putInt("root_id", R.id.root_profile_frame);
-				fragment.setArguments(bundle);
-
+//				DeviceListFragment fragment = new DeviceListFragment();
+//
+//				Bundle bundle = new Bundle();
+//				bundle.putInt("root_id", R.id.root_profile_frame);
+//				fragment.setArguments(bundle);
+//
+//				FragmentTransaction transaction = getFragmentManager()
+//						.beginTransaction();
+//				transaction.add(R.id.root_profile_frame, fragment, "DeviceListFragment");
+//				transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//				transaction.addToBackStack("DeviceListFragment");
+//				transaction.commit();
 				FragmentTransaction transaction = getFragmentManager()
 						.beginTransaction();
-				transaction.add(R.id.root_profile_frame, fragment, "DeviceListFragment");
-				transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-				transaction.addToBackStack("DeviceListFragment");
+				getFragmentManager().popBackStack(null,
+						FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				transaction.add(R.id.root_profile_frame, new UserProfileFragment(),
+						"UserProfileFragment");
 				transaction.commit();
-				
 				
 				
 		/*		FragmentTransaction transaction = getFragmentManager()

@@ -9,100 +9,98 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 import com.fitmi.R;
+import com.fitmi.dao.DeviceListDAO;
 import com.fitmi.utils.Constants;
 
 public class TwoRowDataListAdapter extends BaseAdapter {
 
-	ArrayList<String> dataList;
-	Context context;
+    ArrayList<DeviceListDAO> dataList;
+    Context context;
 
-	public TwoRowDataListAdapter(Context context, ArrayList<String> dataList) {
-		// TODO Auto-generated constructor stub
+    public TwoRowDataListAdapter(Context context, ArrayList<DeviceListDAO> dataList) {
+        // TODO Auto-generated constructor stub
 
-		this.context = context;
-		this.dataList = dataList;
+        this.context = context;
+        this.dataList = dataList;
 
-	}
+    }
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return dataList.size();
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return dataList.size();
+    }
 
-	@Override
-	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Object getItem(int arg0) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public long getItemId(int arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public long getItemId(int arg0) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	public class ViewHolder {
+    public class ViewHolder {
 
-		@InjectView(R.id.DataName)
-		TextView dataName;
-		@InjectView(R.id.device_image)
-		ImageView device_image;
-		
-		@InjectView(R.id.sync_status)
-		TextView sync_status;
-		
-		public ViewHolder(View view) {
-			ButterKnife.inject(this, view);
-		}
+        @InjectView(R.id.DataName)
+        TextView dataName;
+        @InjectView(R.id.device_image)
+        ImageView device_image;
 
-	}
+        @InjectView(R.id.sync_status)
+        TextView sync_status;
 
-	ViewHolder holder;
+        public ViewHolder(View view) {
+            ButterKnife.inject(this, view);
+        }
 
-	@Override
-	public View getView(int arg0, View arg1, ViewGroup arg2) {
-		// TODO Auto-generated method stub
+    }
 
-		View view = arg1;
+    ViewHolder holder;
 
-		if (view == null) {
+    @Override
+    public View getView(int arg0, View arg1, ViewGroup arg2) {
+        // TODO Auto-generated method stub
 
-			LayoutInflater inflater = (LayoutInflater) context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			view = inflater.inflate(R.layout.device_list_item_data, null);
+        View view = arg1;
 
-			holder = new ViewHolder(view);
+        if (view == null) {
 
-			view.setTag(holder);
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.device_list_item_data, null);
 
-		} else {
+            holder = new ViewHolder(view);
 
-			holder = (ViewHolder) view.getTag();
+            view.setTag(holder);
 
-		}
+        } else {
 
-		holder.dataName.setText(dataList.get(arg0));
-		
-		if (dataList.get(arg0).equalsIgnoreCase("Food Scale")) {
-			holder.device_image.setImageResource(R.drawable.food1);
-		} else if (dataList.get(arg0).equalsIgnoreCase("Weight Scale")) {
-			holder.device_image.setImageResource(R.drawable.fat_scale);
-		} else {
-			holder.device_image.setImageResource(R.drawable.pedometer);
-		}
+            holder = (ViewHolder) view.getTag();
 
-		if(Constants.isBluetoothOnLocal==1&&Constants.connectedTodevice==1){
-			holder.sync_status.setText("Synced");
-			
-		}else{
-			holder.sync_status.setText("Not Synced");
-		}
-		return view;
-	}
+        }
+
+        holder.dataName.setText(dataList.get(arg0).getDeviceName());
+
+        if (dataList.get(arg0).getDeviceName().equalsIgnoreCase("Food Scale")) {
+            holder.device_image.setImageResource(R.drawable.food1);
+        } else if (dataList.get(arg0).getDeviceName().equalsIgnoreCase("Weight Scale")) {
+            holder.device_image.setImageResource(R.drawable.fat_scale);
+        } else {
+            holder.device_image.setImageResource(R.drawable.pedometer);
+        }
+
+        holder.sync_status.setText(dataList.get(arg0).getSyncType());
+
+        return view;
+    }
 
 }

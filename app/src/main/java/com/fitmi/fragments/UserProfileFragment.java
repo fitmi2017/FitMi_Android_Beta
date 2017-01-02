@@ -281,7 +281,7 @@ public class UserProfileFragment extends BaseFragment {
 		}
 
 		
-		if(Constants.isBluetoothOnLocal==1&&Constants.connectedTodevice==1){
+		if(Constants.isSync){
 			txt_sync_status.setText("Synced");
 			
 		}else{

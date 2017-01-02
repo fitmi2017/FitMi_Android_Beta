@@ -4,9 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -24,6 +31,7 @@ import com.db.DatabaseHelper;
 import com.db.modules.UserInfoModule;
 import com.fitmi.R;
 import com.fitmi.adapter.TwoRowDataListAdapter;
+import com.fitmi.dao.DeviceListDAO;
 import com.fitmi.dao.UserInfoDAO;
 import com.fitmi.utils.Constants;
 import com.fitmi.utils.HandelOutfemoryException;
@@ -31,129 +39,136 @@ import com.squareup.picasso.Picasso;
 
 public class DeviceListFragment extends BaseFragment {
 
-	@InjectView(R.id.Heading)
-	public TextView heading;
+    @InjectView(R.id.Heading)
+    public TextView heading;
 
-	@InjectView(R.id.Back)
-	public ImageView back;
-	
-	@InjectView(R.id.backLiner)
-	LinearLayout backLiner;
-	int mRootId = 0;
+    @InjectView(R.id.Back)
+    public ImageView back;
 
-	@InjectView(R.id.DeviceListView)
-	ListView deviceListView;
-	
-	@InjectView(R.id.UsersName)
-	TextView UsersName;
-	
-	@InjectView(R.id.imgDevListProfile)
-	ImageView imgDevListProfile;
+    @InjectView(R.id.backLiner)
+    LinearLayout backLiner;
+    int mRootId = 0;
 
-	TwoRowDataListAdapter adapter;
-	ArrayList<String> deviceNames;
-	DatabaseHelper databaseObject;
-	UserInfoDAO userInfo;
+    @InjectView(R.id.DeviceListView)
+    ListView deviceListView;
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+    @InjectView(R.id.UsersName)
+    TextView UsersName;
 
-		View view = inflater.inflate(R.layout.fragment_device_list, container,
-				false);
+    @InjectView(R.id.imgDevListProfile)
+    ImageView imgDevListProfile;
 
-		ButterKnife.inject(this, view);
-		setNullClickListener(view);
-		heading.setText("Devices");
+    TwoRowDataListAdapter adapter;
+    ArrayList<DeviceListDAO> deviceNames;
+    DatabaseHelper databaseObject;
+    UserInfoDAO userInfo;
 
-		deviceNames = new ArrayList<String>();
-		
-		//temp hidden by avinash
-	//	deviceNames.add("Weight Scale");
-	//	deviceNames.add("Pedometer");
-		deviceNames.add("Food Scale");
-	//	deviceNames.add("Blood Pressure Monitor");
-				
-	//	deviceNames.add("Sleep Tracker");
-		
-		databaseObject = new DatabaseHelper(getActivity());
-		try {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
 
-			databaseObject.createDatabase();
+        View view = inflater.inflate(R.layout.fragment_device_list, container,
+                false);
 
-			databaseObject.openDatabase();
+        ButterKnife.inject(this, view);
+        setNullClickListener(view);
+        heading.setText("Devices");
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		userInfo = UserInfoModule.getUserInformation(databaseObject);
-		UsersName.setText(userInfo.getFirstName()+" "+userInfo.getLastName());
-		
-		Bundle bundle = this.getArguments();
-		if (bundle != null) {
-			mRootId = bundle.getInt("root_id", R.id.root_home_frame);
-		}
-		
-		BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-		if (mBluetoothAdapter == null) {
-		    // Device does not support Bluetooth
-			
-		} else {
-		    if (!mBluetoothAdapter.isEnabled()) {
-		        // Bluetooth is not enable :)
-		    	Constants.isBluetoothOnLocal=0;
-		    	Constants.connectedTodevice=0;
-		    }else{
-		    	Constants.isBluetoothOnLocal=1;
-		    }
-		}
-		
-		String imagePath = userInfo.getPicturePath();
-		
-		if(imagePath !=null && !imagePath.equalsIgnoreCase("")){
-			Bitmap myBitmap = HandelOutfemoryException.convertBitmap(imagePath);
-			imgDevListProfile.setImageBitmap(myBitmap);
-			Picasso.with(getActivity()).load("file:" + imagePath).noFade().resize(80, 80).centerCrop().into(imgDevListProfile);
-		}
-		else{
-				
-				if (userInfo.getGender().equalsIgnoreCase("Male")) {	
-					
-					imgDevListProfile.setImageResource(R.drawable.user_male);
+        Log.e("oncreateview", "testing on resume");
+        deviceNames = new ArrayList<DeviceListDAO>();
 
-				} else {
-					
-					imgDevListProfile.setImageResource(R.drawable.user_female);
-				}
-			}
+        //temp hidden by avinash
+        //	deviceNames.add("Weight Scale");
+        //	deviceNames.add("Pedometer");
+        DeviceListDAO dao = new DeviceListDAO();
+        dao.setDeviceName("Food Scale");
+        if (Constants.isSync) {
+            dao.setSyncType("Synced");
+        } else {
+            dao.setSyncType("Not Synced");
+        }
+        deviceNames.add(dao);
+        //	deviceNames.add("Blood Pressure Monitor");
 
-		adapter = new TwoRowDataListAdapter(getActivity(), deviceNames);
-		deviceListView.setAdapter(adapter);
+        //	deviceNames.add("Sleep Tracker");
 
-		deviceListView.setOnItemClickListener(new OnItemClickListener() {
+        databaseObject = new DatabaseHelper(getActivity());
+        try {
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				// TODO Auto-generated method stub
+            databaseObject.createDatabase();
 
-				DeviceSyncFragment fragment = new DeviceSyncFragment();
+            databaseObject.openDatabase();
 
-				Bundle bundle = new Bundle();
-				
-				//if(arg2==0){
-					
-					bundle.putString("userName",
-							userInfo.getFirstName() + " " + userInfo.getLastName());
-					bundle.putString("deviceName", "FoodScale");
-					bundle.putString("imgPath", userInfo.getPicturePath());
-					bundle.putInt("scaleType", 1);
-					//					}
-				//temp hidden by avinash
-			/*	if(arg2==0){
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        userInfo = UserInfoModule.getUserInformation(databaseObject);
+        UsersName.setText(userInfo.getFirstName() + " " + userInfo.getLastName());
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            mRootId = bundle.getInt("root_id", R.id.root_home_frame);
+        }
+
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (mBluetoothAdapter == null) {
+            // Device does not support Bluetooth
+
+        } else {
+            if (!mBluetoothAdapter.isEnabled()) {
+                // Bluetooth is not enable :)
+                Constants.isBluetoothOnLocal = 0;
+                Constants.connectedTodevice = 0;
+            } else {
+                Constants.isBluetoothOnLocal = 1;
+            }
+        }
+
+        String imagePath = userInfo.getPicturePath();
+
+        if (imagePath != null && !imagePath.equalsIgnoreCase("")) {
+            Bitmap myBitmap = HandelOutfemoryException.convertBitmap(imagePath);
+            imgDevListProfile.setImageBitmap(myBitmap);
+            Picasso.with(getActivity()).load("file:" + imagePath).noFade().resize(80, 80).centerCrop().into(imgDevListProfile);
+        } else {
+
+            if (userInfo.getGender().equalsIgnoreCase("Male")) {
+
+                imgDevListProfile.setImageResource(R.drawable.user_male);
+
+            } else {
+
+                imgDevListProfile.setImageResource(R.drawable.user_female);
+            }
+        }
+
+        adapter = new TwoRowDataListAdapter(getActivity(), deviceNames);
+        deviceListView.setAdapter(adapter);
+
+        deviceListView.setOnItemClickListener(new OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
+                // TODO Auto-generated method stub
+
+                DeviceSyncFragment fragment = new DeviceSyncFragment();
+
+                Bundle bundle = new Bundle();
+
+                //if(arg2==0){
+
+                bundle.putString("userName",
+                        userInfo.getFirstName() + " " + userInfo.getLastName());
+                bundle.putString("deviceName", "FoodScale");
+                bundle.putString("imgPath", userInfo.getPicturePath());
+                bundle.putInt("scaleType", 1);
+                //					}
+                //temp hidden by avinash
+            /*	if(arg2==0){
 		
 					bundle.putString("userName",
 							userInfo.getFirstName() + " " + userInfo.getLastName());
@@ -177,11 +192,25 @@ public class DeviceListFragment extends BaseFragment {
 			bundle.putInt("scaleType", 1);
 								}*/
 
-				
-				fragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                    @Override
+                    public void onBackStackChanged() {
+                        deviceNames.clear();
+                        DeviceListDAO dao = new DeviceListDAO();
+                        dao.setDeviceName("Food Scale");
+                        if (Constants.isSync) {
+                            dao.setSyncType("Synced");
+                        } else {
+                            dao.setSyncType("Not Synced");
+                        }
+                        deviceNames.add(dao);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                fragment.setArguments(bundle);
 
-				FragmentTransaction transaction = getFragmentManager()
-						.beginTransaction();
+                FragmentTransaction transaction = getFragmentManager()
+                        .beginTransaction();
 				/*if(Constants.HomeRootId==0){
 				transaction.add(R.id.root_home_frame, fragment,
 						"DeviceSyncFragment");
@@ -190,48 +219,45 @@ public class DeviceListFragment extends BaseFragment {
 				transaction.add(R.id.root_profile_frame, fragment,
 						"DeviceSyncFragment");
 				}*/
-				transaction.add(mRootId, fragment,
-						"DeviceSyncFragment");
-				
-				transaction
-						.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-				transaction.addToBackStack(null);
-				transaction.commit();
+                transaction.add(mRootId, fragment,
+                        "DeviceSyncFragment");
 
-			}
-		});
+                transaction
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
-		return view;
-	}
+            }
+        });
 
-	@OnClick(R.id.backLiner)
-	public void back() {
+        return view;
 
-		getActivity().onBackPressed();
 
-	}
 
-	@OnClick(R.id.Settings)
-	public void gotoSettings() {
+    }
 
-		SettingsFragment fragment = new SettingsFragment();
+    @OnClick(R.id.backLiner)
+    public void back() {
+        getActivity().onBackPressed();
+    }
 
-		Bundle bundle = new Bundle();
-		bundle.putInt("root_id", R.id.root_profile_frame);
-		fragment.setArguments(bundle);
+    @OnClick(R.id.Settings)
+    public void gotoSettings() {
+        SettingsFragment fragment = new SettingsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("root_id", R.id.root_profile_frame);
+        fragment.setArguments(bundle);
+        FragmentTransaction transaction = getFragmentManager()
+                .beginTransaction();
+        transaction.add(R.id.root_profile_frame, fragment, "SettingsFragment");
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
-		FragmentTransaction transaction = getFragmentManager()
-				.beginTransaction();
-		transaction.add(R.id.root_profile_frame, fragment, "SettingsFragment");
-		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-		transaction.addToBackStack(null);
-		transaction.commit();
+    @OnClick(R.id.Base_Header)
+    public void clickHeaderBase() {
 
-	}
-	
-	@OnClick(R.id.Base_Header)
-	public void clickHeaderBase() {
-
-	}
+    }
 
 }

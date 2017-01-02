@@ -43,6 +43,7 @@ public class DeviceSyncService extends Service {
 	int prev_val_kscale=-1;
 	DateModule getDate = new DateModule();
 	WeightLogModule weightModule;
+
 	public static final String ACTION_FROM_SERVICE = "FROM_SERVICE";
 	public static final String ACTION_FROM_ACTIVITY = "FROM_ACTIVITY";
 

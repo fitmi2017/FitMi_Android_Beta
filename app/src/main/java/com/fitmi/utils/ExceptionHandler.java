@@ -18,17 +18,22 @@
  */
 
 package com.fitmi.utils;
-import java.io.*;
-import java.util.Date;
 
-import android.content.*;
+import android.content.Context;
 import android.os.Build;
 import android.os.Process;
+import android.util.Log;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 	private final Context myContext;
 	private String localPath;
-	String extStorageDirectory = "/sdcard/Fitmi/Fitmi.txt";
+//	String extStorageDirectory = "/sdcard/Fitmi/Fitmi.txt";
 	 private File cacheDir;
 	 EmailSendClass email = new EmailSendClass();
 	public ExceptionHandler(Context context) {
@@ -36,9 +41,12 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 	}
 
 	public void uncaughtException(Thread thread, Throwable exception) {
+
+		Log.e("Exception", "I found:", exception);
+
 		StringWriter stackTrace = new StringWriter();
 		exception.printStackTrace(new PrintWriter(stackTrace));
-		
+
 		System.err.println(stackTrace);// You can use LogCat too
 		   //Find the dir to save cached images also add permission to manifastfile 
         if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED))
@@ -65,6 +73,9 @@ public class ExceptionHandler implements Thread.UncaughtExceptionHandler {
 	   void writeToFile(String stacktrace, File filename) {
 		    try {
 		    	stacktrace = stacktrace+"\n Version : 6.0\n Device :"+getDeviceName()+"\nOS : "+Build.VERSION.RELEASE;
+				if (!filename.exists())
+					filename.createNewFile();
+
 		      BufferedWriter bos = new BufferedWriter(new FileWriter(filename,true));
 		      bos.write(stacktrace+"\n\n----------------------New Exception------------------------------\n\n");
 		      bos.flush();

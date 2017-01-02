@@ -40,12 +40,9 @@ public class RootProfileFragment extends BaseFragment {
 		userList = obj.userList();
 		
 		if(userList.size()>0){
-			
 			transaction.add(R.id.root_profile_frame, new UserProfileFragment(),
 					"UserProfileFragment");
-			
 		}else{
-			
 			Bundle bundle = new Bundle();
 			bundle.putInt("root_id", 1);
 			
@@ -54,11 +51,8 @@ public class RootProfileFragment extends BaseFragment {
 			f.setArguments(bundle);			
 			transaction.add(R.id.root_profile_frame, f,	"UserProfileFragment");
 		}
-		
-		
-		
-		transaction.commit();
 
+		transaction.commit();
 		return view;
 	}
 
