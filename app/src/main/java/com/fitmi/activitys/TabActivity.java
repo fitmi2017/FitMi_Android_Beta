@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,14 +13,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.db.modules.UnitModule;
 import com.db.modules.UserInfoModule;
@@ -34,12 +33,12 @@ import com.fitmi.utils.interFragmentScaleCommunicator;
 
 import java.util.ArrayList;
 
-import aicare.net.cn.iPabulumLibrary.bleprofile.BleProfileService;
-import aicare.net.cn.iPabulumLibrary.pabulum.PabulumManager;
-import aicare.net.cn.iPabulumLibrary.pabulum.PabulumService;
-import aicare.net.cn.iPabulumLibrary.utils.PabulumBleConfig;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import cn.net.aicare.pabulumlibrary.bleprofile.BleProfileService;
+import cn.net.aicare.pabulumlibrary.entity.FoodData;
+import cn.net.aicare.pabulumlibrary.pabulum.PabulumService;
+import cn.net.aicare.pabulumlibrary.utils.PabulumBleConfig;
 
 public class TabActivity extends BaseFragmentActivity implements interFragmentScaleCommunicator {
 
@@ -96,6 +95,11 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     AlertDialog alertDialog;
     boolean hasGoneForEnableLocation = false;
 
+    public void setWeightOnDevice(int wt) {
+        byte[] b = initSetWeighCMD(wt*10); // weight_value=236
+        binder.sendCMD(b);
+    }
+
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
@@ -119,7 +123,6 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
         resetTabs();
 
         if (userList.size() > 0) {
-
             homeLinear.setClickable(true);
             activityLinear.setClickable(true);
             helpLinear.setClickable(true);
@@ -168,56 +171,136 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
         this.binder = (PabulumService.PabulumBinder) localBinder;
     }
 
+
     @Override
-    protected void onIndicationSuccess() {
+    protected void onReadRssi(int i) {
+
+    }
+
+    //    @Override
+//    protected void onError(String s, int i) {
+//       Log.e(",message = " , s + " errorCode = " + i);
+//        onDeviceDisconnected();
+//    }
+    @Override
+    protected void getBleVersion(String s) {
+
     }
 
     @Override
-    protected void onDeviceConnected() {
-        Log.e("onDeviceConnected", "onDeviceConnected");
-        if(isDeviceConnected()) {
-            Constants.isSync = true;
-            Intent new_intent = new Intent();
-            new_intent.setAction(Constants.ACTION_SCALE_SUCCESSFULLY_CONNECTED);
-            sendBroadcast(new_intent);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (getSavedUnits().equals("7")) {
-                        binder.setUnit(PabulumBleConfig.UNIT_G);
-                        ut = 7;
-                    } else {
-                        binder.setUnit(PabulumBleConfig.UNIT_OZ);
-                        ut = 8;
-                    }
+    protected void onLeScanCallback(BluetoothDevice bluetoothDevice, int i) {
+        connectDevice(bluetoothDevice);
+        //L.e(TAG, bluetoothDevice.getAddress());
+    }
+
+    @Override
+    protected void onStateChanged(int state) {
+        super.onStateChanged(state);
+        switch (state) {
+            case BleProfileService.STATE_CONNECTED:
+                Log.e("onDeviceConnected", "onDeviceConnected");
+                if (isDeviceConnected()) {
+                    Constants.isSync = true;
+                    Intent new_intent = new Intent();
+                    new_intent.setAction(Constants.ACTION_SCALE_SUCCESSFULLY_CONNECTED);
+                    sendBroadcast(new_intent);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (getSavedUnits().equals("7")) {
+                                binder.setUnit(PabulumBleConfig.UNIT_G);
+                                ut = 7;
+                            } else {
+                                binder.setUnit(PabulumBleConfig.UNIT_OZ);
+                                ut = 8;
+                            }
+                        }
+                    }, 800);
                 }
-            }, 800);
+                break;
+            case BleProfileService.STATE_DISCONNECTED:
+                wt = 0;
+                Constants.isSync = false;
+                break;
+//            case BleProfileService.STATE_INDICATION_SUCCESS:
+//                setUnit(DEFAULT_UNIT);
+//                break;
         }
     }
 
-    @Override
-    public void onDeviceDisconnected() {
-        super.onDeviceDisconnected();
-        wt = 0;
-        Constants.isSync = false;
-    }
 
     @Override
-    protected void getWeight(double v) {
-        int v1 = (int) (v + 0.5);
+    protected void bluetoothStateOn() {
+        super.bluetoothStateOn();
+        startBLEScan();
+    }
+
+
+    @Override
+    protected void getFoodData(FoodData foodData) {
+//        int v1 = getMeSomethingIncredible(foodData);
+
+        int v1 = (int) (foodData.getWeight() + 0.5);
         if (wt != v1)
             sendBroadcast(new Intent().setAction("NEW_WEIGHT").putExtra("weight", v1));
         wt = v1;
     }
 
+    private int getMeSomethingIncredible(FoodData foodData) {
+
+//        Log.e("weight=======", foodData.getWeight()+" --");
+
+        switch (foodData.getUnit()) {
+            //Unit: 00=g  01:mL 02:lboz  03:floz
+            case 00:
+                // Grams
+                return (int) (foodData.getWeight());
+
+            case 01:
+                return getFromMilliLitres(foodData.getWeight());
+
+            case 02:
+                return getFromLbOz(String.valueOf(foodData.getWeight()));
+
+            case 03:
+                return getFromOz(foodData.getWeight());
+        }
+
+        return 0;
+    }
+
+    private int getFromLbOz(String weight) {
+        // 0:0.00
+        weight = weight.trim();
+
+        int index = weight.indexOf(":");
+        String lbsStr = weight.substring(0, index);
+        String ozStr = weight.substring(index + 1, weight.length());
+
+        int lbs = Integer.parseInt(lbsStr.trim());
+        int oz = getFromOz(Double.parseDouble(ozStr.trim()));
+
+        return (int) ((lbs * 453.59237d) + oz);
+    }
+
+    private int getFromMilliLitres(double weight) {
+        return (int) (weight);
+    }
+
+    private int getFromOz(double weight) {
+        double oz = (weight);
+        return (int) (oz * 28.34952d);
+    }
+
     @Override
     protected void getUnit(byte b) {
+        Log.e("new unit is= ", " " + b);
         if (PabulumBleConfig.UNIT_G == b)
             sendBroadcast(new Intent().setAction("NEW_UNIT").putExtra("unit", 7));
         else if (PabulumBleConfig.UNIT_OZ == b)
             sendBroadcast(new Intent().setAction("NEW_UNIT").putExtra("unit", 8));
-        else if (b == -2)
-            sendBroadcast(new Intent().setAction("NEW_UNIT").putExtra("unit", ut));
+//        else if (b == -2)
+//            sendBroadcast(new Intent().setAction("NEW_UNIT").putExtra("unit", ut));
     }
 
     @OnClick({R.id.HomeLinear_Tab, R.id.HomeImg_Tab})
@@ -416,7 +499,12 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
                         && !isDeviceConnected()) {
                     BluetoothAdapter c = BluetoothAdapter.getDefaultAdapter();
                     if (c.isEnabled()) {
-                        startScan();
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                startScan();
+                            }
+                        }, 500);
                     }
                 }
             }
@@ -428,7 +516,13 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     private void startBLEScan() {
         BluetoothAdapter c = BluetoothAdapter.getDefaultAdapter();
         if (c.isEnabled()) {
-            startScan();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startScan();
+                }
+            }, 500);
         } else {
             startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 102);
         }
@@ -492,12 +586,14 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     public void tare() {
         if (isDeviceConnected() && binder != null) {
             binder.netWeight();
-
         }
     }
 
     @Override
     public void changeUnits(String units) {
+
+        Log.e("changeUnits=", " " + units);
+
         if (isDeviceConnected() && binder != null) {
             if (units != null && units.equalsIgnoreCase("7")) {
                 binder.setUnit(PabulumBleConfig.UNIT_G);
@@ -506,6 +602,8 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
                 binder.setUnit(PabulumBleConfig.UNIT_OZ);
                 ut = 8;
             }
+            // getUnits callback is not getting called when units changes from Application.
+            sendBroadcast(new Intent().setAction("NEW_UNIT").putExtra("unit", ut));
         }
 
     }
@@ -556,13 +654,13 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
             alertDialogBuilder.setPositiveButton("Enable",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface d, int arg1) {
-                            final BluetoothAdapter adapter =  BluetoothAdapter.getDefaultAdapter();
+                            final BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
                             adapter.enable();
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                  if(adapter.isEnabled())
-                                      startScan();
+                                    if (adapter.isEnabled())
+                                        startScan();
                                 }
                             }, 500);
                             d.dismiss();

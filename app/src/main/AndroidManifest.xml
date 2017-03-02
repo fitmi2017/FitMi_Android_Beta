@@ -35,12 +35,13 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme"
+        android:supportsRtl="true"
         tools:replace="android:icon">
 
         <!-- android:name="com.fitmi.application.FitMiApplication" -->
 
 
-        <service android:name="aicare.net.cn.iPabulumLibrary.pabulum.PabulumService"/>
+        <service android:name="cn.net.aicare.pabulumlibrary.pabulum.PabulumService"/>
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"

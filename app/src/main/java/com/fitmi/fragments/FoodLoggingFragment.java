@@ -1,56 +1,5 @@
 package com.fitmi.fragments;
 
-import it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer;
-import it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer.OnDrawerCloseListener;
-import it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer.OnDrawerOpenListener;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.nio.channels.FileChannel;
-import java.security.KeyStore;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-
-import org.apache.commons.lang3.text.WordUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -61,7 +10,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -108,10 +56,6 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
@@ -160,6 +104,60 @@ import com.fitmi.utils.NotificationTotalCaloryChange;
 import com.fitmi.utils.NotifyCalorieChange;
 import com.fitmi.utils.interFragmentScaleCommunicator;
 import com.ssl.MySSLSocketFactory;
+
+import org.apache.commons.lang3.text.WordUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.nio.channels.FileChannel;
+import java.security.KeyStore;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+import it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer;
+import it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer.OnDrawerCloseListener;
+import it.sephiroth.demo.slider.widget.MultiDirectionSlidingDrawer.OnDrawerOpenListener;
 
 public class FoodLoggingFragment extends BaseFragment implements
         NotifyCalorieChange, NotificationCalorieIntake, MealFavNotify {
@@ -586,7 +584,6 @@ public class FoodLoggingFragment extends BaseFragment implements
             today = com.fitmi.utils.Constants.sTempDate;
         }
         com.fitmi.utils.Constants.conditionDate = today;
-
         com.fitmi.utils.Constants.homeCaloryIntake = daily_calorie_text;
         com.fitmi.utils.Constants.remainCaloryBurn = remainCaloryBurn;
         com.fitmi.utils.Constants.foodcalorieText = food_calorie_text;
@@ -617,11 +614,8 @@ public class FoodLoggingFragment extends BaseFragment implements
         databaseObject = new DatabaseHelper(getActivity());
         databaseObjectForFood = new DatabaseHelper(getActivity());
         try {
-
             databaseObject.createDatabase();
-
             databaseObject.openDatabase();
-
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -653,18 +647,15 @@ public class FoodLoggingFragment extends BaseFragment implements
             }
 
             if (mealId == 0) {
-
                 if (!log) {
                     foodListData = foodLogObj.selectAllFoodList(databaseObject);
                     setFoodlistData(foodListData, true);
                 }
 
             } else {
-
                 addMealClick = true;
                 recentFoodClick = true;
                 favFoodClick = true;
-
                 mealListData = foodLogObj.selectFoodList(
                         String.valueOf(mealId), databaseObject);
                 // foodListData =
@@ -674,22 +665,18 @@ public class FoodLoggingFragment extends BaseFragment implements
                 mealIdSpinner = mealId;
                 switch (mealId) {
                     case 1:
-
                         mealId = 1;
                         heading.setText("Breakfast");
                         break;
-
                     case 2:
                         mealId = 2;
                         heading.setText("Lunch");
                         break;
                     case 3:
-
                         mealId = 3;
                         heading.setText("Dinner");
                         break;
                     case 4:
-
                         mealId = 4;
                         heading.setText("Snack");
                         break;
@@ -817,17 +804,14 @@ public class FoodLoggingFragment extends BaseFragment implements
 
                                     if (mealListData.get(position).getFavourite()
                                             .equalsIgnoreCase("0")) {
-
                                         foodLogObj.updateFavourite(id, "1");
                                         mealListData.clear();
-
                                         mealListData = foodLogObj.selectFoodList(
                                                 String.valueOf(mealIdSpinner),
                                                 databaseObject);
                                     } else {
                                         foodLogObj.updateFavourite(id, "0");
                                         mealListData.clear();
-
                                         mealListData = foodLogObj.selectFoodList(
                                                 String.valueOf(mealIdSpinner),
                                                 databaseObject);
@@ -941,7 +925,10 @@ public class FoodLoggingFragment extends BaseFragment implements
 //                                        sFOODLOGGING_PrevPOS = sFOODLOGGING_POS;
 //                                    }
                                     sFOODLOGGING_POS = arg2;
-                                    ((TabActivity) getActivity()).wt = ((TabActivity) getActivity()).wt - 1;
+
+//                                    ((TabActivity) getActivity()).wt = ((TabActivity) getActivity()).wt - 1;
+                                    updateValueTap(sFOODLOGGING_POS);
+                                    ((TabActivity) getActivity()).setWeightOnDevice(Integer.parseInt(currActivewt));
                                     updateValueTap(sFOODLOGGING_POS);
                                 }
                                 foodAdapter.notifyDataSetChanged();
@@ -985,7 +972,7 @@ public class FoodLoggingFragment extends BaseFragment implements
                 menu.addMenuItem(editItem);
 
 				/*
-				 * // Favorite Item SwipeMenuItem starItem = new
+                 * // Favorite Item SwipeMenuItem starItem = new
 				 * SwipeMenuItem(getActivity() .getApplicationContext());
 				 * starItem.setWidth(dp2px(60)); switch (menu.getViewType()) {
 				 * case 0: // create menu of type 0 (NOT FAVORITE)
@@ -1029,18 +1016,10 @@ public class FoodLoggingFragment extends BaseFragment implements
 
                                 if (com.fitmi.utils.Constants.gunitfw == 0) {
                                     scaleCommunicator.changeUnits("8");
-
                                 } else {
                                     scaleCommunicator.changeUnits("7");
                                 }
 
-                                try {
-                                    totalFoodFooterAdapter.notifyDataSetChanged();
-                                    foodAdapter.notifyDataSetChanged();
-                                } catch (Exception e) {
-                                    // TODO: handle exception
-
-                                }
                                 break;
                             case 2:
                                 try {
@@ -1439,7 +1418,7 @@ public class FoodLoggingFragment extends BaseFragment implements
                     }
 
 					/*
-					 * if(foodListRecent !=null && foodListRecent.size()>0){
+                     * if(foodListRecent !=null && foodListRecent.size()>0){
 					 * foodListRecent.clear(); }
 					 */
                     recentListViewParentLinear.setVisibility(View.VISIBLE);
@@ -1448,7 +1427,7 @@ public class FoodLoggingFragment extends BaseFragment implements
                     // foodLogObj.selectAllFavFoodListById(String.valueOf(mealIdCh));
 
 					/*
-					 * if(foodListRecentMeal.size()>0)
+                     * if(foodListRecentMeal.size()>0)
 					 * foodListRecentMeal.clear();
 					 *
 					 * foodListRecentMeal =
@@ -2315,7 +2294,6 @@ public class FoodLoggingFragment extends BaseFragment implements
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-
 
                     View view = getActivity().getCurrentFocus();
                     if (view != null) {
@@ -4721,8 +4699,7 @@ public class FoodLoggingFragment extends BaseFragment implements
 
             if (sFOODLOGGING_POS >= 0)
                 saveNewCurrentWeight(String.valueOf(intent.getIntExtra("weight", 0)), sFOODLOGGING_POS);
-            else
-            {
+            else {
                 totalFoodFooterAdapter = new TotalFoodFooterAdapter(
                         getActivity(),
                         String.valueOf(intent.getIntExtra("weight", 0)),
@@ -4739,24 +4716,16 @@ public class FoodLoggingFragment extends BaseFragment implements
     private BroadcastReceiver currentUnit = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.getIntExtra("unit", 7) == 7) {
 
-                changeUnitFood();
-                com.fitmi.utils.Constants.gunitfw = 0;
-            } else if (intent.getIntExtra("unit", 7) == 8) {
+            changeUnitFood(intent.getIntExtra("unit", 7));
 
-                changeUnitFood();
+            if (com.fitmi.utils.Constants.gunitfw == 0 && intent.getIntExtra("unit", 7) == 8) {
                 com.fitmi.utils.Constants.gunitfw = 1;
             } else {
-                if (com.fitmi.utils.Constants.gunitfw == 0) {
-                    com.fitmi.utils.Constants.gunitfw = 1;
-                    changeUnitFood();
-
-                } else {
-                    com.fitmi.utils.Constants.gunitfw = 0;
-                    changeUnitFood();
-                }
+                com.fitmi.utils.Constants.gunitfw = 0;
             }
+
+
             try {
                 totalFoodFooterAdapter.notifyDataSetChanged();
                 foodAdapter.notifyDataSetChanged();
@@ -6517,7 +6486,7 @@ public class FoodLoggingFragment extends BaseFragment implements
 
                         total_cals = Float.parseFloat(scaleCommunicator.getWeight())
                                 * pergram_cal;
-                        currActiveCalwt = String.valueOf((int)(total_cals));
+                        currActiveCalwt = String.valueOf((int) (total_cals));
                         fitmiFoodLogData.setCalory(currActiveCalwt);
                         fitmiFoodLogData.setMealWeight(scaleCommunicator.getWeight());
                         fitmiFoodLogData.setFavourite("0");
@@ -6553,9 +6522,7 @@ public class FoodLoggingFragment extends BaseFragment implements
                             // com.fitmi.utils.Constants.foodLogData=foodListDataAlies;
                         } else {
                             foodListDataAlies.clear();
-
-                            foodListDataAlies = foodLogObj.selectFoodList(
-                                    String.valueOf(mealId), databaseObject);
+                            foodListDataAlies = foodLogObj.selectFoodList(String.valueOf(mealId), databaseObject);
                         }
                         searchListAdapter();
                         newDataAdd = true;
@@ -6575,9 +6542,11 @@ public class FoodLoggingFragment extends BaseFragment implements
                         if (!addMealLiner.isShown() && !log == true) {
                             sFOODLOGGING_POS = foodListDataAlies.size() - 1;
 //                            sFOODLOGGING_POS =  - 1;
-                            if(foodAdapter==null)
+                            if (foodAdapter == null) {
                                 foodAdapter = new FoodAdapter(getActivity(), foodListDataAlies,
-                                      FoodLoggingFragment.this);
+                                        FoodLoggingFragment.this);
+                                foodLoggingListView2.setAdapter(foodAdapter);
+                            }
                             foodAdapter.notifyDataSetChanged();
                             _searchadded = 1;
                         }
@@ -7069,9 +7038,7 @@ public class FoodLoggingFragment extends BaseFragment implements
     public void sendKitchenScale() {
 
         UserInfoDAO userInfo;
-        UserInfoModule userDb;
-
-        userDb = new UserInfoModule(getActivity());
+        UserInfoModule userDb = new UserInfoModule(getActivity());
         userInfo = UserInfoModule.getUserInformation(databaseObject);
         DeviceSyncFragment fragment = new DeviceSyncFragment();
 
@@ -7095,99 +7062,103 @@ public class FoodLoggingFragment extends BaseFragment implements
         transaction.commit();
     }
 
-    public void changeUnitFood() {
+    public void changeUnitFood(int units) {
 
 
-        if (com.fitmi.utils.Constants.gunitfw == 0) {
+        Log.e("new unit is= unit= ", " " + units);
+
+//        if (com.fitmi.utils.Constants.gunitfw == 0) {
+//
 //            com.fitmi.utils.Constants.gunitfw = 0;
 
-            unitDataFood_Weight = new UnitItemDAO();
+        unitDataFood_Weight = new UnitItemDAO();
 
-            unitDataFood_Weight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataFood_Weight.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataFood_Weight.setType("food_weight");
-            unitDataFood_Weight.setUnitId(String.valueOf(7));
+        unitDataFood_Weight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+        unitDataFood_Weight.setUserId(com.fitmi.utils.Constants.USER_ID);
+        unitDataFood_Weight.setType("food_weight");
+        unitDataFood_Weight.setUnitId(String.valueOf(units));
 
-        } else {
-//            com.fitmi.utils.Constants.gunitfw = 1;
+//        }
+//        else {
+////            com.fitmi.utils.Constants.gunitfw = 1;
+//
+//            unitDataFood_Weight = new UnitItemDAO();
+//
+//            unitDataFood_Weight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataFood_Weight.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataFood_Weight.setType("food_weight");
+//            unitDataFood_Weight.setUnitId(String.valueOf(8));
+//        }
 
-            unitDataFood_Weight = new UnitItemDAO();
-
-            unitDataFood_Weight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataFood_Weight.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataFood_Weight.setType("food_weight");
-            unitDataFood_Weight.setUnitId(String.valueOf(8));
-        }
-
-        if (com.fitmi.utils.Constants.gunitbp == 0) {
-            com.fitmi.utils.Constants.gunitbp = 0;
-
-
-            unitDataBp = new UnitItemDAO();
-
-            unitDataBp.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataBp.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataBp.setType("blood_pressure");
-            unitDataBp.setUnitId(String.valueOf(5));
-        } else {
-            com.fitmi.utils.Constants.gunitbp = 1;
-
-
-            unitDataBp = new UnitItemDAO();
-
-            unitDataBp.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataBp.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataBp.setType("blood_pressure");
-            unitDataBp.setUnitId(String.valueOf(6));
-        }
-
-        if (com.fitmi.utils.Constants.gunitht == 0) {
-            com.fitmi.utils.Constants.gunitht = 0;
-
-            unitDataHeight = new UnitItemDAO();
-
-            unitDataHeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataHeight.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataHeight.setType("height");
-            unitDataHeight.setUnitId(String.valueOf(1));
-
-
-        } else {
-            com.fitmi.utils.Constants.gunitht = 1;
-
-            unitDataHeight = new UnitItemDAO();
-
-            unitDataHeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataHeight.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataHeight.setType("height");
-            unitDataHeight.setUnitId(String.valueOf(2));
-
-
-        }
-
-        if (com.fitmi.utils.Constants.gunitwt == 0) {
-
-            unitDataWeight = new UnitItemDAO();
-
-            com.fitmi.utils.Constants.gunitwt = 0;
-            unitDataWeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataWeight.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataWeight.setType("weight");
-            unitDataWeight.setUnitId("4");
-
-        } else {
-            unitDataWeight = new UnitItemDAO();
-
-            com.fitmi.utils.Constants.gunitwt = 1;
-            unitDataWeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
-            unitDataWeight.setUserId(com.fitmi.utils.Constants.USER_ID);
-            unitDataWeight.setType("weight");
-            unitDataWeight.setUnitId("3");
-        }
+//        if (com.fitmi.utils.Constants.gunitbp == 0) {
+//            com.fitmi.utils.Constants.gunitbp = 0;
+//
+//
+//            unitDataBp = new UnitItemDAO();
+//
+//            unitDataBp.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataBp.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataBp.setType("blood_pressure");
+//            unitDataBp.setUnitId(String.valueOf(5));
+//        } else {
+//            com.fitmi.utils.Constants.gunitbp = 1;
+//
+//
+//            unitDataBp = new UnitItemDAO();
+//
+//            unitDataBp.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataBp.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataBp.setType("blood_pressure");
+//            unitDataBp.setUnitId(String.valueOf(6));
+//        }
+//
+//        if (com.fitmi.utils.Constants.gunitht == 0) {
+//            com.fitmi.utils.Constants.gunitht = 0;
+//
+//            unitDataHeight = new UnitItemDAO();
+//
+//            unitDataHeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataHeight.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataHeight.setType("height");
+//            unitDataHeight.setUnitId(String.valueOf(1));
+//
+//
+//        } else {
+//            com.fitmi.utils.Constants.gunitht = 1;
+//
+//            unitDataHeight = new UnitItemDAO();
+//
+//            unitDataHeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataHeight.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataHeight.setType("height");
+//            unitDataHeight.setUnitId(String.valueOf(2));
+//
+//
+//        }
+//
+//        if (com.fitmi.utils.Constants.gunitwt == 0) {
+//
+//            unitDataWeight = new UnitItemDAO();
+//
+//            com.fitmi.utils.Constants.gunitwt = 0;
+//            unitDataWeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataWeight.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataWeight.setType("weight");
+//            unitDataWeight.setUnitId("4");
+//
+//        } else {
+//            unitDataWeight = new UnitItemDAO();
+//
+//            com.fitmi.utils.Constants.gunitwt = 1;
+//            unitDataWeight.setProfileId(com.fitmi.utils.Constants.PROFILE_ID);
+//            unitDataWeight.setUserId(com.fitmi.utils.Constants.USER_ID);
+//            unitDataWeight.setType("weight");
+//            unitDataWeight.setUnitId("3");
+//        }
 //        scaleCommunicator.changeUnits(unitDataFood_Weight.getUnitId());
-        unitModel.setUnitLog(unitDataHeight);
-        unitModel.setUnitLog(unitDataWeight);
-        unitModel.setUnitLog(unitDataBp);
+//        unitModel.setUnitLog(unitDataHeight);
+//        unitModel.setUnitLog(unitDataWeight);
+//        unitModel.setUnitLog(unitDataBp);
         unitModel.setUnitLog(unitDataFood_Weight);
 
     }

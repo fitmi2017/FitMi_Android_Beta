@@ -251,21 +251,21 @@ public class DateModule {
 
 	public String dobDateFormat(String dateString) {
 		String formattedDate = "";
-
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MMMM/yyyy",
-				Locale.ENGLISH);
-		SimpleDateFormat targetFormatter = new SimpleDateFormat("MMMM dd, yyyy");
-		Date convertedDate = new Date();
 		try {
-			convertedDate = dateFormat.parse(dateString);
+			if(dateString!=null && !dateString.trim().equals("")) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MMMM/yyyy",
+						Locale.ENGLISH);
+				SimpleDateFormat targetFormatter = new SimpleDateFormat("MMMM dd, yyyy");
+				Date convertedDate = new Date();
 
-			formattedDate = targetFormatter.format(convertedDate);
+				convertedDate = dateFormat.parse(dateString);
 
+				formattedDate = targetFormatter.format(convertedDate);
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(convertedDate);
 		return formattedDate;
 	}
 

@@ -238,8 +238,10 @@ public class UserProfileFragment extends BaseFragment {
 		//	txtWeight.setText(userInfo.getWeight() + " kg");
 			int wei=0;
 			double db=0.0;
-			
-			db=Double.parseDouble(userInfo.getWeight());
+			try {
+				db = Double.parseDouble(userInfo.getWeight());
+			}catch (Exception e)
+			{}
 			wei=(int) db;
 			txtWeight.setText(wei + " kg");
 			}else{

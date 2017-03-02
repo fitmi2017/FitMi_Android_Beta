@@ -16,16 +16,14 @@ public class FitMiApplication extends Application {
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
-
 		super.onCreate();
-
 		MultiDex.install(this);
 
-		ACRA.init(this);
-		ACRAReportSender reportSender = new ACRAReportSender("joe08mark@gmail.com", "Host123456");
-
-		  // register it with ACRA.
-		  ACRA.getErrorReporter().setReportSender(reportSender);
+//		ACRA.init(this);
+//		ACRAReportSender reportSender = new ACRAReportSender("joe08mark@gmail.com", "Host123456");
+//
+//		  // register it with ACRA.
+//		  ACRA.getErrorReporter().setReportSender(reportSender);
 	}
 
 }
