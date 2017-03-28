@@ -33,16 +33,19 @@
                 android:layout_marginRight="2dp"
                 android:src="@drawable/total_weight" />
 
-            <TextView
+            <com.custom.view.MyTextView
                 android:id="@+id/total_cuurent_active_wt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
-                android:layout_marginLeft="6dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:gravity="right"
                 android:text="0"
-                android:textSize="20sp" />
+                android:paddingTop="3dp"
+                android:textColor="@color/black_dialbg"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -64,26 +67,31 @@
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
 
-            <ImageView
-
+            <TextView
+                android:id="@+id/food_content_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-
                 android:layout_marginRight="2dp"
+                android:background="@drawable/total_nutration_1"
+                android:gravity="center"
+                android:padding="7dp"
+                android:text="CAL"
+                android:textSize="14sp" />
 
-                android:src="@drawable/total_nutration" />
-
-            <TextView
+            <com.custom.view.MyTextView
                 android:id="@+id/total_current_calorie_wt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
+                android:gravity="right"
                 android:text="0"
-                android:textSize="20sp" />
+                android:paddingTop="3dp"
+                android:textColor="@color/black_dialbg"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -112,16 +120,19 @@
                 android:layout_marginRight="2dp"
                 android:src="@drawable/total_meal" />
 
-            <TextView
+            <com.custom.view.MyTextView
                 android:id="@+id/total__wt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|right"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="10dp"
                 android:layout_weight="1"
+                android:gravity="right|center"
+                android:paddingTop="3dp"
                 android:text="0"
-                android:textSize="20sp" />
+                android:textColor="@color/black_dialbg"
+                android:textSize="18sp" />
         </LinearLayout>
     </LinearLayout>
 

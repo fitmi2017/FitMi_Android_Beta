@@ -1,12 +1,21 @@
 package com.db.modules;
 
 public class RememberMeData {
-	
+	private boolean isRemember;
 	private String userName = "";
 	private String password = "";
 	private String userId = "";
 	private String access_key = "";
 	private String _calorieOn = "";
+
+	public boolean isRemember() {
+		return isRemember;
+	}
+
+	public void setRemember(boolean remember) {
+		isRemember = remember;
+	}
+
 	public String getUserName() {
 		return userName;
 	}

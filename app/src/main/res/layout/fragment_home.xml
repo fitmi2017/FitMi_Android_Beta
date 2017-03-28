@@ -693,6 +693,7 @@
                 </FrameLayout>
 
                 <FrameLayout
+                    android:visibility="invisible"
                     android:id="@+id/waterFrameLayout"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

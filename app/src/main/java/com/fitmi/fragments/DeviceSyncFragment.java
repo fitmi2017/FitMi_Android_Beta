@@ -13,6 +13,7 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -265,11 +266,23 @@ public class DeviceSyncFragment extends BaseFragment {
 
         // handler.removeCallbacksAndMessages(null);
         if (Constants.isSync) {
-            ((TabActivity) getActivity()).resetTabs();
-            ((TabActivity) getActivity()).homeLinear
-                    .setBackgroundColor(getResources().getColor(
-                            R.color.royal_blue));
-            ((TabActivity) getActivity())._mViewPager.setCurrentItem(0);
+
+//            ((TabActivity) getActivity()).resetTabs();
+//            ((TabActivity) getActivity()).homeLinear
+//                    .setBackgroundColor(getResources().getColor(
+//                            R.color.royal_blue));
+//            ((TabActivity) getActivity())._mViewPager.setCurrentItem(0);
+
+
+            FragmentTransaction transaction = getFragmentManager()
+                    .beginTransaction();
+            getFragmentManager().popBackStack(null,
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            transaction.add(R.id.root_home_frame, new FoodLoggingFragment(),
+                    "FoodLoggingFragment");
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         } else {
             getActivity().onBackPressed();

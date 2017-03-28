@@ -258,7 +258,7 @@ public class SignUpActivity extends BaseActivity {
 						
 						Constants.LOGIN_MAIL_ID = username;
 						
-						SaveSharedPreferences.saveLoginDetail(SignUpActivity.this,username,pass,Constants.USER_ID,access_key);
+						SaveSharedPreferences.saveLoginDetail(SignUpActivity.this,username,pass,Constants.USER_ID,access_key, false);
 						
 					//	Alert.showAlertSignIn(SignUpActivity.this, "You have successfully signed up.",mCommonFunction);
 						mCommonFunction.showIntent(TabActivity.class);

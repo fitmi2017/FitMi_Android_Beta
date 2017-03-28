@@ -11,7 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-public class BpLogModule extends BaseModule{
+public class BpLogModule extends BaseModule {
 	
 	
 	ArrayList<BloodPressureSet> bpGraphData = new ArrayList<BloodPressureSet>();

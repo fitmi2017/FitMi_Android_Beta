@@ -108,7 +108,7 @@ public class ChatFragment extends BaseFragment{
 				alertDialog.show();
 			}
 		});
-	        webViewChat.loadUrl("https://secure.livechatinc.com/licence/3498581/open_chat.cgi?groups=0");
+	        webViewChat.loadUrl("https://secure.livechatinc.com/licence/8703301/open_chat.cgi?groups=0");
 
 		return view;
 	}

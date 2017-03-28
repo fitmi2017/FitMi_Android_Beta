@@ -27,6 +27,7 @@ import butterknife.OnClick;
 
 import com.db.DatabaseHelper;
 import com.db.modules.UserInfoModule;
+import com.dts.classes.CommonFunction;
 import com.fitmi.R;
 import com.fitmi.activitys.SignInActivity;
 import com.fitmi.adapter.InstrumentAdapter;
@@ -34,6 +35,7 @@ import com.fitmi.dao.UserInfoDAO;
 import com.fitmi.utils.Constants;
 import com.fitmi.utils.DateModule;
 import com.fitmi.utils.HandelOutfemoryException;
+import com.fitmi.utils.SaveSharedPreferences;
 import com.squareup.picasso.Picasso;
 
 public class UserProfileFragment extends BaseFragment {
@@ -151,7 +153,7 @@ public class UserProfileFragment extends BaseFragment {
 			e.printStackTrace();
 		}
 
-		
+		mCommonFunction = new CommonFunction(getActivity());
 		// avinash
 		userDb = new UserInfoModule(getActivity());
 
@@ -312,25 +314,22 @@ public class UserProfileFragment extends BaseFragment {
 	@OnClick(R.id.Logout_UserProfile)
 	public void logout() {
 
-		/*
-		 * Intent intent = new Intent(getActivity(), SignInActivity.class);
-		 * intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-		 * Intent.FLAG_ACTIVITY_CLEAR_TASK); startActivity(intent);
-		 * getActivity().finish();
-		 */
+// *********old function****************
+//		FragmentTransaction transaction = getFragmentManager()
+//				.beginTransaction();
+//		transaction.add(R.id.root_profile_frame, new UserListFragment(),
+//				"UserListFragment");
+//		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//		transaction.addToBackStack("UserListFragment");
+//		transaction.commit();
+//**************************************
 
-		// Bundle bundle = new Bundle();
-		// bundle.putInt("root_id", R.id.root_profile_frame);
-		// UserListFragment fragment = new UserListFragment();
-		// fragment.setArguments(bundle);
 
-		FragmentTransaction transaction = getFragmentManager()
-				.beginTransaction();
-		transaction.add(R.id.root_profile_frame, new UserListFragment(),
-				"UserListFragment");
-		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-		transaction.addToBackStack("UserListFragment");
-		transaction.commit();
+		SaveSharedPreferences.clearAllSavedSharedPreferences(getActivity());
+		databaseObject.db_delete();
+		mCommonFunction.showIntent(SignInActivity.class);
+		getActivity().finish();
+
 
 	}
 
@@ -350,6 +349,8 @@ public class UserProfileFragment extends BaseFragment {
 		transaction.commit();
 
 	}
+
+
 
 	@OnClick(R.id.backLiner)
 	public void back() {

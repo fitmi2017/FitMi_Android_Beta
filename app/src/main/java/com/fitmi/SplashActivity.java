@@ -37,7 +37,7 @@ public class SplashActivity extends BaseActivity {
 
 				RememberMeData rememberMe = SaveSharedPreferences.getLoginDetail(SplashActivity.this);
 
-				if(rememberMe.getUserName().equalsIgnoreCase(""))
+				if(!rememberMe.isRemember())
 					mCommonFunction.showIntent(SignInActivity.class);
 				else{	
 					Constants.USER_ID = rememberMe.getUserId();

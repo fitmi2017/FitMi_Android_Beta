@@ -501,7 +501,6 @@ public class HomeFragment extends BaseFragment implements NotificationTotalCalor
 		if(Constants.USER_ID !="" && Constants.PROFILE_ID !=""){
 			totalCaloty = FoodLoginModule.todayTotalCalory(today,databaseObject);
 			detailCaloryBaseline = UserInfoModule.getCaloryBaseline(databaseObject);
-
 			totalCalotyBurn = ActivityModule.todayTotalCaloryBurn(today, databaseObject,getActivity());
 			Constants.conditionDate = today;
 
@@ -1508,7 +1507,7 @@ public class HomeFragment extends BaseFragment implements NotificationTotalCalor
 			// caloryIntake = Integer.parseInt(detailCaloryBaseline.getTotalIntake());
 
 			try{
-				Log.e("detailCaloryBaseline Home calorie ", detailCaloryBaseline.getTotalIntake());
+				Log.e(" Home calorie ", detailCaloryBaseline.getTotalIntake());
 			caloryIntake = Double.parseDouble(detailCaloryBaseline.getTotalIntake());
 
 			caloryBurn = Double.parseDouble(detailCaloryBaseline.getTotalBurned());

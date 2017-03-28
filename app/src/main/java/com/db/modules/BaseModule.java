@@ -1,41 +1,35 @@
 package com.db.modules;
 
-import java.io.IOException;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.db.DatabaseHelper;
 
+import java.io.IOException;
+
 public class BaseModule {
-	
-	DatabaseHelper databaseObject;
-	Context ctx;
-	SQLiteDatabase db; 
-	SQLiteDatabase readDb; 
-	
-	public BaseModule(Context ctx)
-	{
-		this.ctx = ctx;
-		initDb();
-	}
 
-	public void initDb()
-	{
-		databaseObject = new DatabaseHelper(ctx);
-		try {
+    DatabaseHelper databaseObject;
+    Context ctx;
+    SQLiteDatabase db;
+    SQLiteDatabase readDb;
 
-			databaseObject.createDatabase();
+    public BaseModule(Context ctx) {
+        this.ctx = ctx;
+        initDb();
+    }
 
-			databaseObject.openDatabase();
+    public void initDb() {
+        databaseObject = new DatabaseHelper(ctx);
+        try {
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		db = databaseObject.getWritableDatabase();
-		readDb = databaseObject.getReadableDatabase();
-	}
-	
-	
+            databaseObject.createDatabase();
+            databaseObject.openDatabase();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        db = databaseObject.getWritableDatabase();
+        readDb = databaseObject.getReadableDatabase();
+    }
 }

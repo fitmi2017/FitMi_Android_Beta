@@ -20,7 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private SQLiteDatabase myDataBase;
     private final Context myContext;
-    private static final String DATABASE_NAME = "Fitmi.sqlite";
+    private static final String DATABASE_NAME = "Fitmi_1.sqlite";
+//    private static final String DATABASE_NAME = "Fitmi.sqlite";
     public final static String DATABASE_PATH = "/data/data/com.fitmi.initial/databases/";
     public static final int DATABASE_VERSION = 1;
     //public static final int DATABASE_VERSION_old = 1;
@@ -42,9 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // bumped
             //onUpgrade(myDataBase, DATABASE_VERSION_old, DATABASE_VERSION);
         }
-
-        boolean dbExist1 = checkDataBase();
-        if (!dbExist1) {
+        else {
             this.getReadableDatabase();
             try {
                 this.close();

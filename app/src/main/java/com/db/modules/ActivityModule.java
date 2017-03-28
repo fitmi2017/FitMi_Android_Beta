@@ -275,7 +275,7 @@ public class ActivityModule{
 		db= helper.getWritableDatabase();
 		}catch (Exception ex)
 		{
-			Log.e("Exception todayTotalCaloryBurn database","todayTotalCaloryBurn database");
+			Log.e("todayTotalCaloryBurn","todayTotalCaloryBurn database");
 		}
 		String calorySumBurn = "";
 
