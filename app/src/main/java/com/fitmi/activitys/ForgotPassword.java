@@ -105,20 +105,17 @@ public class ForgotPassword extends BaseActivity {
             String SetServerString = "";
             HttpURLConnection conn = null;
 
-
             DefaultHttpClient Client = getNewHttpClient();
             HttpPost httpost = new HttpPost(JSON_URL);
             StringEntity se = null;
             try {
                 se = new StringEntity(holder.toString());
             } catch (UnsupportedEncodingException e2) {
-                // TODO Auto-generated catch block
                 e2.printStackTrace();
             }
 
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("email_address",
-                    email));
+            nameValuePairs.add(new BasicNameValuePair("email_address", email));
             try {
                 httpost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -135,7 +132,6 @@ public class ForgotPassword extends BaseActivity {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-
 
             return SetServerString;
         }
