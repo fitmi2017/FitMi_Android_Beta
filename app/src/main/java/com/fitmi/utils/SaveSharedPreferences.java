@@ -3,7 +3,7 @@ package com.fitmi.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.db.modules.RememberMeData;
+import com.fitmi.dao.RememberMeData;
 
 public class SaveSharedPreferences {
 
@@ -29,7 +29,8 @@ public class SaveSharedPreferences {
         editor.putString("username", userName);
         editor.putString("password", password);
         editor.putString("userid", userId);
-        editor.putString("access_key", access_key);
+        if (access_key != null && !access_key.equals(""))
+            editor.putString("access_key", access_key);
         editor.putBoolean("isRemember", isRemember);
         editor.commit();
     }

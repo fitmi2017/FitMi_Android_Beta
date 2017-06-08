@@ -254,33 +254,33 @@ public class FoodAdapter extends BaseAdapter {
 
         holder.imageViewFav.setTag(tag);
 
-        holder.imageViewFav.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                TagSet tag = (TagSet) v.getTag();
-
-                switch (tag.imgId) {
-                    case R.drawable.green_star:
-                        tag.favImg.setImageResource(R.drawable.favorites_star);
-                        tag.imgId = R.drawable.favorites_star;
-                        foodLogObj.updateFavourite(tag.foodId, "1");
-
-                        notifyDataSetChanged();
-                        break;
-
-                    case R.drawable.favorites_star:
-                        tag.favImg.setImageResource(R.drawable.green_star);
-                        tag.imgId = R.drawable.green_star;
-                        foodLogObj.updateFavourite(tag.foodId, "0");
-                        notifyDataSetChanged();
-                        break;
-                }
-
-                buttonListener.buttonPressed();
-            }
-        });
+//        holder.imageViewFav.setOnClickListener(new OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                TagSet tag = (TagSet) v.getTag();
+//
+//                switch (tag.imgId) {
+//                    case R.drawable.green_star:
+//                        tag.favImg.setImageResource(R.drawable.favorites_star);
+//                        tag.imgId = R.drawable.favorites_star;
+//                        foodLogObj.updateFavourite(tag.foodId, "1");
+//
+//                        notifyDataSetChanged();
+//                        break;
+//
+//                    case R.drawable.favorites_star:
+//                        tag.favImg.setImageResource(R.drawable.green_star);
+//                        tag.imgId = R.drawable.green_star;
+//                        foodLogObj.updateFavourite(tag.foodId, "0");
+//                        notifyDataSetChanged();
+//                        break;
+//                }
+//
+//                buttonListener.buttonPressed();
+//            }
+//        });
 
 
         if (FoodLoggingFragment.sFOODLOGGING_POS == arg0) {

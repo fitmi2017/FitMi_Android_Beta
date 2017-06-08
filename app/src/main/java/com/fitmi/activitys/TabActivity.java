@@ -19,6 +19,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.db.modules.UnitModule;
 import com.db.modules.UserInfoModule;
@@ -46,6 +47,7 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
 
     public ViewPager _mViewPager;
     public ViewPagerAdapter _madapter;
+    public static BluetoothDevice bluetoothDevice;
 
 
     @InjectView(R.id.HomeLinear_Tab)
@@ -96,7 +98,7 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     boolean hasGoneForEnableLocation = false;
 
     public void setWeightOnDevice(int wt) {
-        byte[] b = initSetWeighCMD(wt*10); // weight_value=236
+        byte[] b = initSetWeighCMD(wt * 10); // weight_value=236
         binder.sendCMD(b);
     }
 
@@ -177,11 +179,6 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
 
     }
 
-    //    @Override
-//    protected void onError(String s, int i) {
-//       Log.e(",message = " , s + " errorCode = " + i);
-//        onDeviceDisconnected();
-//    }
     @Override
     protected void getBleVersion(String s) {
 
@@ -190,20 +187,39 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     @Override
     protected void onLeScanCallback(BluetoothDevice bluetoothDevice, int i) {
         connectDevice(bluetoothDevice);
+
+        Constants.addLogToFile(" TabActivity onLeScanCallback-->  connectDevice \n");
+        Log.e("AutoConnection", "onLeScanCallback---->connectDevice");
+
+        this.bluetoothDevice = bluetoothDevice;
         //L.e(TAG, bluetoothDevice.getAddress());
     }
 
     @Override
     protected void onStateChanged(int state) {
         super.onStateChanged(state);
+
+        Constants.addLogToFile(" TabActivity onStateChanged-->  onStateChanged \n");
+
         switch (state) {
             case BleProfileService.STATE_CONNECTED:
-                Log.e("onDeviceConnected", "onDeviceConnected");
+                Log.e("AutoConnection", "onStateChanged STATE_CONNECTED");
+                Toast.makeText(TabActivity.this, "Scale Connected!", Toast.LENGTH_SHORT).show();
+
+
+                Constants.addLogToFile(" TabActivity onStateChanged-->  STATE_CONNECTED\n");
+
+
                 if (isDeviceConnected()) {
+                    Log.e("AutoConnection", " STATE_CONNECTED isDeviceConnected");
                     Constants.isSync = true;
                     Intent new_intent = new Intent();
                     new_intent.setAction(Constants.ACTION_SCALE_SUCCESSFULLY_CONNECTED);
                     sendBroadcast(new_intent);
+
+                    Constants.addLogToFile(" TabActivity onStateChanged-->  STATE_CONNECTED sendBroadcasts\n");
+
+
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -216,11 +232,23 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
                             }
                         }
                     }, 800);
+                }else{
+                    Log.e("AutoConnection", "STATE_CONNECTED not isDeviceConnected");
                 }
+
                 break;
             case BleProfileService.STATE_DISCONNECTED:
+
+                Constants.addLogToFile(" TabActivity onStateChanged-->  STATE_DISCONNECTED\n");
+                Log.e("AutoConnection", "onStateChanged STATE_DISCONNECTED");
+                stopScan();
+                Toast.makeText(TabActivity.this, "Scale Disconnected!", Toast.LENGTH_SHORT).show();
                 wt = 0;
                 Constants.isSync = false;
+                sendBroadcast(new Intent("DeviceDisconnected"));
+
+                Constants.addLogToFile(" TabActivity onStateChanged-->  STATE_DISCONNECTED sendBroadcasts\n");
+
                 break;
 //            case BleProfileService.STATE_INDICATION_SUCCESS:
 //                setUnit(DEFAULT_UNIT);
@@ -472,12 +500,15 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void connectDevice() {
+        Log.e("AutoConnection", "connectDevice");
+        Constants.addLogToFile(" TabActivity connectDevice-->  1st time \n");
         try {
             if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     && !(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1001);
             } else {
                 if (ensureBLESupported()) {
+                    Constants.addLogToFile(" TabActivity connectDevice-->  1st time  startBLEScan\n");
                     startBLEScan();
                 }
             }
@@ -489,20 +520,33 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void connectDevice(boolean isFromRepeatingCheck) {
+
+        Log.e("AutoConnection", "connectDevice(true)");
+        Constants.addLogToFile(" TabActivity connectDevice--> isFromRepeatingCheck \n");
         try {
             if (((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
                     && (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED))
                     || (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP)) {
+//                Toast.makeText(this, "connectDevice called", Toast.LENGTH_SHORT);
 
-                if (ensureBLESupported()
-                        && !isDeviceConnected()) {
+                if (ensureBLESupported() && !isDeviceConnected()) {
                     BluetoothAdapter c = BluetoothAdapter.getDefaultAdapter();
                     if (c.isEnabled()) {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                startScan();
+//                                Toast.makeText(TabActivity.this, "connectDevice called scanning...."+bluetoothDevice, Toast.LENGTH_SHORT);
+//                                startScan();
+//                                if (bluetoothDevice != null) {
+//                                    connectDevice(bluetoothDevice);
+//                                    Log.e("AutoConnection","connectDevice (true)------>connectDevice");
+//                                } else {
+                                    startScan();
+                                Constants.addLogToFile(" TabActivity connectDevice--> isFromRepeatingCheck startScan \n");
+                                    Log.e("AutoConnection","connectDevice (true)------>startScan");
+//                                }
+
                             }
                         }, 500);
                     }
@@ -521,6 +565,7 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
                 @Override
                 public void run() {
                     startScan();
+                    Constants.addLogToFile(" TabActivity connectDevice-->  1st time  startBLEScan startScan\n");
                 }
             }, 500);
         } else {
@@ -546,6 +591,7 @@ public class TabActivity extends BaseFragmentActivity implements interFragmentSc
             if (isAllow) {
                 if (ensureBLESupported()) {
                     try {
+                        Constants.addLogToFile(" TabActivity connectDevice-->  1st time  onRequestPermissionsResult startBLEScan \n");
                         startBLEScan();
                         Log.e("start scan", "icomon if scan started ");
                     } catch (Exception e) {

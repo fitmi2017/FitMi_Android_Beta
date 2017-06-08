@@ -1,19 +1,13 @@
 package com.fitmi.activitys;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -36,7 +30,6 @@ import com.db.modules.LoginModule;
 import com.db.modules.SignUpModule;
 import com.db.modules.UnitModule;
 import com.db.modules.UserInfoModule;
-import com.dialog.Alert;
 import com.dts.classes.AsyncTaskListener;
 import com.dts.classes.JSONParser;
 import com.dts.classes.PostObject;
@@ -47,28 +40,7 @@ import com.fitmi.dao.UnitItemDAO;
 import com.fitmi.dao.UserInfoDAO;
 import com.fitmi.utils.Constants;
 import com.fitmi.utils.SaveSharedPreferences;
-import com.ssl.MySSLSocketFactory;
 
-import org.apache.http.HttpVersion;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -76,16 +48,12 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.security.KeyStore;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.InjectView;
@@ -153,13 +121,6 @@ public class SignInActivity extends BaseActivity {
         setContentView(R.layout.activity_signin);
 
         prepareKnives();
-
-        //email = (EditText)findViewById(R.id.Email);
-        //password = (EditText)findViewById(R.id.Password);
-
-        //email.setText("test1@gmail.com");
-        //password.setText("1234567");
-
 
         databaseObject = new DatabaseHelper(SignInActivity.this);
         try {
@@ -368,7 +329,7 @@ public class SignInActivity extends BaseActivity {
                     JSONObject postData = systemInfo.optJSONObject("post_data");
 
 				/*	signData.setFirstName(postData.optString("first_name"));
-					signData.setLastName(postData.optString("last_name"));
+                    signData.setLastName(postData.optString("last_name"));
 					signData.setEmailAddress(postData.optString("email_address"));
 					signData.setPassword(postData.optString("password"));*/
 
@@ -388,9 +349,8 @@ public class SignInActivity extends BaseActivity {
                     if (loginStatus == 1) {
 
                         //	AsyncGetUserProfile asyncGetUserProfile =new AsyncGetUserProfile("http://59.162.181.91/portfolio/fitmiwebservice/index.php/get/user/profile?", Constants.Access_token, access_key);
-
                         //	asyncGetUserProfile.execute("execute");
-						
+
 					/*	String username = postData.optString("email_address");
 						String pass = postData.optString("password");*/
 
@@ -400,7 +360,7 @@ public class SignInActivity extends BaseActivity {
                         Constants.LOGIN_MAIL_ID = username;
 
                         SaveSharedPreferences.saveLoginDetail(SignInActivity.this, username, pass, Constants.USER_ID, access_key, checkBoxSave.isChecked());
-                        getUserDetails(access_key, Constants.Access_token, emailStr, JSONParser.HOST_URL_DYNAMIC + "fitmiwebservice/index.php/get/user/profile");
+                        getUserDetails( Constants.Access_token,  JSONParser.HOST_URL_DYNAMIC + "index.php/authentication/user_profile?");
                         //	mCommonFunction.showIntent(TabActivity.class);
                         //	finish();
                     }
@@ -425,7 +385,7 @@ public class SignInActivity extends BaseActivity {
     };
 
 
-    private void getUserDetails(final String acc_key, final String acc_token, final String username, String Json_Url) {
+    private void getUserDetails(final String acc_token,  String Json_Url) {
 
         //	Json_Url = "http://192.168.1.34/WS/check.php/WS/check.php";
         Log.e("JSON URZL", Json_Url);
@@ -434,10 +394,7 @@ public class SignInActivity extends BaseActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //   Toast.makeText(SignInActivity.this,response,Toast.LENGTH_LONG).show();
-		                    	
-		                    /*	showProgressMessage(getResources().getString(R.string.app_name),
-		        						"Please wait......");*/
+
                         Log.e("response using volley", response.toString());
 
                         String _dob;
@@ -448,71 +405,52 @@ public class SignInActivity extends BaseActivity {
 
                             String status = jsonObject.optString("status");
                             if (status.equalsIgnoreCase("true")) {
-                                JSONObject jsonResult = jsonObject.getJSONObject("result");
+                                JSONObject jsonResult = jsonObject.getJSONObject("data");
 
-                                userInfoData.setProfileId(jsonResult.getString("id"));
-                                Constants.PROFILE_ID = jsonResult.getString("id");
-                                userInfoData.setUserId(Constants.USER_ID);
+                                userInfoData.setUserId(jsonResult.getString("user_id"));
+                                userInfoData.setProfileId(jsonResult.getString("user_id"));
+                                Constants.PROFILE_ID = jsonResult.getString("user_id");
+                                Constants.USER_ID=Constants.PROFILE_ID;
+
+
+//                                userInfoData.setUserId(Constants.USER_ID);
+
                                 userInfoData.setFirstName(jsonResult.getString("first_name"));
                                 userInfoData.setLastName(jsonResult.getString("last_name"));
                                 userInfoData.setGender(jsonResult.getString("gender"));
                                 userInfoData.setHeightFt(jsonResult.getString("height_ft"));
-
                                 userInfoData.setHeightInc(jsonResult.getString("height_in"));
                                 userInfoData.setWeight(jsonResult.getString("weight"));
+
                                 weight_unit = (jsonResult.getString("weight_units"));
                                 _dob = (jsonResult.getString("date_of_birth"));
-                                Log.e("data of birth", _dob);
 
                                 long dob_ = Long.parseLong(_dob);
                                 _dob = getDate(dob_);
-
-
-                                Log.e("data of birth string ", _dob);
                                 String dateString = _dob;
 
                                 SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyy");
                                 try {
                                     Date date = format.parse(dateString);
-
-
                                     String stringMonth = (String) android.text.format.DateFormat.format("MMM", date); //Jun
                                     String stringyear = (String) android.text.format.DateFormat.format("yyyy", date); //2013
                                     String stringday = (String) android.text.format.DateFormat.format("dd", date); //20
 
                                     _dob = stringday + "/" + stringMonth + "/" + stringyear;
-		              						
-		              					/*	Calendar cal = Calendar.getInstance();
-		              						cal.setTime(date);
 
-
-		              						mYear = cal.get(Calendar.YEAR);
-		              						mMonth = cal.get(Calendar.MONTH);
-		              						mDay = cal.get(Calendar.DAY_OF_MONTH);
-
-		              						dobDate = Calendar.getInstance();				
-		              						dobDate.set(mYear, mMonth, mDay);*/
-                                    System.out.println(date);
                                 } catch (Exception e) {
                                     // TODO Auto-generated catch block
                                     e.printStackTrace();
                                 }
-                                Log.e("data of birth android ", _dob);
 
                                 userInfoData.setDateOfBirth(_dob);
                                 userInfoData.setActivityLevel(jsonResult.getString("activity_level"));
                                 userInfoData.setDailyCaloryIntake(jsonResult.getString("daily_calorie_intake"));
-                                //userInfoData.setPicturePath(jsonResult.getString("profile_image"));
 
-
-                                //	UserInfoModule.insertUserInformationProfileLogin(userInfoData,databaseObject);
-
-
-                                //SaveSharedPreferences.saveProfileID(SignInActivity.this, Constants.PROFILE_ID);
 
 
                                 CaloryBaselineDAO baseLineData = new CaloryBaselineDAO();
-
+//
                                 baseLineData.setUserProfileId(userProfileId);
                                 baseLineData.setUserId(Constants.USER_ID);
                                 //baseLineData.setTotalIntake(String.valueOf(IntakeVal));
@@ -525,16 +463,21 @@ public class SignInActivity extends BaseActivity {
                                 baseLineData.setBpDia("80");
                                 baseLineData.setBpSys("120");
 
-                                if (jsonResult.getString("profile_image").length() > 0 && !jsonResult.getString("profile_image").equalsIgnoreCase("null")) {
-                                    getUserProfileImage(jsonResult.getString("profile_image"), userInfoData, baseLineData);
-                                } else {
+//                                if (jsonResult.getString("picture").length() > 0 && !jsonResult.getString("picture").equalsIgnoreCase("null")) {
+//                                    getUserProfileImage(jsonResult.getString("picture"), userInfoData, baseLineData);
+//                                } else
+
+                                {
                                     hideProgressDialog();
-                                    userInfoData.setPicturePath("");
+                                    userInfoData.setPicturePath(jsonResult.getString("picture"));
                                     UserInfoModule.insertUserInformationProfileLogin(userInfoData, databaseObject);
-                                    userProfileId = UserInfoModule.getProfileId(databaseObject);
-                                    Constants.PROFILE_ID = userProfileId;
+
+//                                    userProfileId = UserInfoModule.getProfileId(databaseObject);
+//                                    Constants.PROFILE_ID = userProfileId;
 
                                     SaveSharedPreferences.saveProfileID(SignInActivity.this, Constants.PROFILE_ID);
+
+
                                     baseLineData.setUserProfileId(Constants.PROFILE_ID);
                                     baseLineData.setUserId(Constants.USER_ID);
                                     UserInfoModule.insertCaloryBaseline(baseLineData, databaseObject);
@@ -629,32 +572,18 @@ public class SignInActivity extends BaseActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
+                params.put("token", acc_token);
+                params.put("action", "fetch");
+                params.put("user_id", Constants.USER_ID);
 
-                params.put("access_key", acc_key);
-                params.put("access_token", acc_token);
-                params.put("users_id", Constants.USER_ID);
-                params.put("username", username);
-
-
-                Log.e("access_key", acc_key);
-                Log.e("access_token", acc_token);
-                Log.e("users_id", Constants.USER_ID);
-                Log.e("username", username);
                 return params;
             }
 
             @Override
             public Map<String, String> getHeaders()
                     throws AuthFailureError {
-                // TODO Auto-generated method stub
                 Map<String, String> params = new HashMap<String, String>();
-                // Removed this line if you dont need it or Use application/json
-                //   params.put("Accept", "application/x-www-form-urlencoded");
-                //   params.put("Content-Type", "UTF-8");
-                //   params.put("access_key",acc_key);
-                //      params.put("access_token",acc_token);
                 return params;
-                //return super.getHeaders();
             }
 
 
@@ -678,118 +607,118 @@ public class SignInActivity extends BaseActivity {
     }
 
 
-    public void getUserProfileImage(String imageName, final UserInfoDAO userInfoData, final CaloryBaselineDAO baseLineData) {
-
-        ImageRequest imgRequest = new ImageRequest(JSONParser.IMAGE_URL + imageName, new Response.Listener<Bitmap>() {
-            @Override
-            public void onResponse(Bitmap response) {
-                //do stuff
-                File newfile = null;
-                try {
-                    newfile = savebitmap(response);
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-
-                hideProgressDialog();
-
-
-                if (newfile != null) {
-                    Log.e("File Path", "" + newfile.getAbsolutePath());
-
-                    userInfoData.setPicturePath(newfile.getAbsolutePath());
-                }
-                String userProfileId;
-                UserInfoModule.insertUserInformationProfileLogin(userInfoData, databaseObject);
-                userProfileId = UserInfoModule.getProfileId(databaseObject);
-                Constants.PROFILE_ID = userProfileId;
-
-                SaveSharedPreferences.saveProfileID(SignInActivity.this, Constants.PROFILE_ID);
-                baseLineData.setUserProfileId(Constants.PROFILE_ID);
-                baseLineData.setUserId(Constants.USER_ID);
-                UserInfoModule.insertCaloryBaseline(baseLineData, databaseObject);
-
-                Log.e("baseLineData calorie ", baseLineData.getTotalIntake());
-          					
-        /*  					unitDataWeight = new UnitItemDAO();
-      						com.fitmi.utils.Constants.gunitwt = 1;	
-      						unitDataWeight.setProfileId(Constants.PROFILE_ID);
-      						unitDataWeight.setUserId(Constants.USER_ID);
-      						unitDataWeight.setType("weight");
-      						unitDataWeight.setUnitId("4");*/
-
-                unitDataWeight = new UnitItemDAO();
-
-                if (weight_unit.equalsIgnoreCase("Lbs")) {
-                    Constants.gunitwt = 1;
-                    unitDataWeight.setUnitId("3");
-                } else {
-                    Constants.gunitwt = 0;
-                    unitDataWeight.setUnitId("4");
-                }
-
-
-                unitDataWeight.setProfileId(Constants.PROFILE_ID);
-                unitDataWeight.setUserId(Constants.USER_ID);
-                unitDataWeight.setType("weight");
-
-
-                Constants.gunitfw = 0;
-
-                unitDataFood_Weight = new UnitItemDAO();
-
-                unitDataFood_Weight.setProfileId(Constants.PROFILE_ID);
-                unitDataFood_Weight.setUserId(Constants.USER_ID);
-                unitDataFood_Weight.setType("food_weight");
-                unitDataFood_Weight.setUnitId(String.valueOf(7));
-
-
-                Constants.gunitbp = 0;
-
-
-                unitDataBp = new UnitItemDAO();
-
-                unitDataBp.setProfileId(Constants.PROFILE_ID);
-                unitDataBp.setUserId(Constants.USER_ID);
-                unitDataBp.setType("blood_pressure");
-                unitDataBp.setUnitId(String.valueOf(5));
-
-
-                Constants.gunitht = 0;
-
-                unitDataHeight = new UnitItemDAO();
-
-                unitDataHeight.setProfileId(Constants.PROFILE_ID);
-                unitDataHeight.setUserId(Constants.USER_ID);
-                unitDataHeight.setType("height");
-                unitDataHeight.setUnitId(String.valueOf(1));
-
-
-                unitModel.setUnitLog(unitDataHeight);
-                unitModel.setUnitLog(unitDataWeight);
-                unitModel.setUnitLog(unitDataBp);
-                unitModel.setUnitLog(unitDataFood_Weight);
-
-
-                unitItem = unitModel.selectUnitLogList();
-                Log.e("Size of unit database ", String.valueOf(unitItem.size()));
-
-                mCommonFunction.showIntent(TabActivity.class);
-                finish();
-
-            }
-        }, 0, 0, Bitmap.Config.ARGB_8888,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //do stuff
-                    }
-                });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(imgRequest);
-
-    }
+//    public void getUserProfileImage(String imageName, final UserInfoDAO userInfoData, final CaloryBaselineDAO baseLineData) {
+//
+//        ImageRequest imgRequest = new ImageRequest(JSONParser.IMAGE_URL + imageName, new Response.Listener<Bitmap>() {
+//            @Override
+//            public void onResponse(Bitmap response) {
+//                //do stuff
+//                File newfile = null;
+//                try {
+//                    newfile = savebitmap(response);
+//                } catch (IOException e) {
+//                    // TODO Auto-generated catch block
+//                    e.printStackTrace();
+//                }
+//
+//                hideProgressDialog();
+//
+//
+//                if (newfile != null) {
+//                    Log.e("File Path", "" + newfile.getAbsolutePath());
+//
+//                    userInfoData.setPicturePath(newfile.getAbsolutePath());
+//                }
+//                String userProfileId;
+//                UserInfoModule.insertUserInformationProfileLogin(userInfoData, databaseObject);
+//                userProfileId = UserInfoModule.getProfileId(databaseObject);
+//                Constants.PROFILE_ID = userProfileId;
+//
+//                SaveSharedPreferences.saveProfileID(SignInActivity.this, Constants.PROFILE_ID);
+//                baseLineData.setUserProfileId(Constants.PROFILE_ID);
+//                baseLineData.setUserId(Constants.USER_ID);
+//                UserInfoModule.insertCaloryBaseline(baseLineData, databaseObject);
+//
+//                Log.e("baseLineData calorie ", baseLineData.getTotalIntake());
+//
+//        /*  					unitDataWeight = new UnitItemDAO();
+//      						com.fitmi.utils.Constants.gunitwt = 1;
+//      						unitDataWeight.setProfileId(Constants.PROFILE_ID);
+//      						unitDataWeight.setUserId(Constants.USER_ID);
+//      						unitDataWeight.setType("weight");
+//      						unitDataWeight.setUnitId("4");*/
+//
+//                unitDataWeight = new UnitItemDAO();
+//
+//                if (weight_unit.equalsIgnoreCase("Lbs")) {
+//                    Constants.gunitwt = 1;
+//                    unitDataWeight.setUnitId("3");
+//                } else {
+//                    Constants.gunitwt = 0;
+//                    unitDataWeight.setUnitId("4");
+//                }
+//
+//
+//                unitDataWeight.setProfileId(Constants.PROFILE_ID);
+//                unitDataWeight.setUserId(Constants.USER_ID);
+//                unitDataWeight.setType("weight");
+//
+//
+//                Constants.gunitfw = 0;
+//
+//                unitDataFood_Weight = new UnitItemDAO();
+//
+//                unitDataFood_Weight.setProfileId(Constants.PROFILE_ID);
+//                unitDataFood_Weight.setUserId(Constants.USER_ID);
+//                unitDataFood_Weight.setType("food_weight");
+//                unitDataFood_Weight.setUnitId(String.valueOf(7));
+//
+//
+//                Constants.gunitbp = 0;
+//
+//
+//                unitDataBp = new UnitItemDAO();
+//
+//                unitDataBp.setProfileId(Constants.PROFILE_ID);
+//                unitDataBp.setUserId(Constants.USER_ID);
+//                unitDataBp.setType("blood_pressure");
+//                unitDataBp.setUnitId(String.valueOf(5));
+//
+//
+//                Constants.gunitht = 0;
+//
+//                unitDataHeight = new UnitItemDAO();
+//
+//                unitDataHeight.setProfileId(Constants.PROFILE_ID);
+//                unitDataHeight.setUserId(Constants.USER_ID);
+//                unitDataHeight.setType("height");
+//                unitDataHeight.setUnitId(String.valueOf(1));
+//
+//
+//                unitModel.setUnitLog(unitDataHeight);
+//                unitModel.setUnitLog(unitDataWeight);
+//                unitModel.setUnitLog(unitDataBp);
+//                unitModel.setUnitLog(unitDataFood_Weight);
+//
+//
+//                unitItem = unitModel.selectUnitLogList();
+//                Log.e("Size of unit database ", String.valueOf(unitItem.size()));
+//
+//                mCommonFunction.showIntent(TabActivity.class);
+//                finish();
+//
+//            }
+//        }, 0, 0, Bitmap.Config.ARGB_8888,
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        //do stuff
+//                    }
+//                });
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(imgRequest);
+//
+//    }
 
     public static File savebitmap(Bitmap bmp) throws IOException {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();

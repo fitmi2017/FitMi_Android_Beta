@@ -146,7 +146,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="1dp"
                             android:layout_gravity="bottom"
-                            android:layout_marginTop="9dp"
                             android:background="@null"
                             android:gravity="left"
                             android:popupBackground="#ffffff"

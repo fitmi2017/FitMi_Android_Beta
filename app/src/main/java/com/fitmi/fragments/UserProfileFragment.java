@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,6 +24,8 @@ import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -291,23 +296,18 @@ public class UserProfileFragment extends BaseFragment {
 		}else{
 			txt_sync_status.setText("Not Synced");
 		}
-		/*
-		 * adapter = new InstrumentAdapter(getActivity());
-		 * instrumentListView.setAdapter(adapter);
-		 * 
-		 * 
-		 * 
-		 * instrumentListView.setOnTouchListener(new OnTouchListener() { //
-		 * Setting on Touch Listener for handling the touch inside ScrollView
-		 * 
-		 * @Override public boolean onTouch(View v, MotionEvent event) { //
-		 * Disallow the touch request for parent scroll on touch of child view
-		 * v.getParent().requestDisallowInterceptTouchEvent(true); return false;
-		 * }
-		 * 
-		 * 
-		 * });
-		 */
+
+
+		if (scaleConnected != null) {
+			IntentFilter intentFilter = new IntentFilter(Constants.ACTION_SCALE_SUCCESSFULLY_CONNECTED);
+			getActivity().registerReceiver(scaleConnected, intentFilter);
+		}
+
+		if (scaleDisConnected != null) {
+			IntentFilter intentFilter = new IntentFilter("DeviceDisconnected");
+			getActivity().registerReceiver(scaleDisConnected, intentFilter);
+		}
+
 		return view;
 	}
 
@@ -331,6 +331,35 @@ public class UserProfileFragment extends BaseFragment {
 		getActivity().finish();
 
 
+	}
+
+	private BroadcastReceiver scaleConnected = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			txt_sync_status.setText("Synced");
+//			Toast.makeText(getActivity(), "Connected -->receiver to change the text", Toast.LENGTH_SHORT).show();
+		}
+	};
+
+	private BroadcastReceiver scaleDisConnected = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			txt_sync_status.setText("Not Synced");
+//			Toast.makeText(getActivity(), "deisconnected receiver to change the text", Toast.LENGTH_SHORT).show();
+		}
+	};
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		try {
+			getActivity().unregisterReceiver(scaleConnected);
+			getActivity().unregisterReceiver(scaleDisConnected);
+
+		} catch (Exception a) {
+			a.printStackTrace();
+		}
+		super.onDestroy();
 	}
 
 	@OnClick(R.id.EditProfile_UserProfile)

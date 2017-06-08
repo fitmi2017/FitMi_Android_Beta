@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 import com.fitmi.R;
+
+import java.io.File;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -137,25 +140,43 @@ public class HelpFragment extends BaseFragment {
 	}
 	
 	protected void sendEmail() {
+
+
+
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		emailIntent.setType("text/plain");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"harmanpreetk@impingeonline.com", "davinder@impingesolutions.com"});
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Fitmi Logs file ");
+		emailIntent.putExtra(Intent.EXTRA_TEXT, "Please find the attached file for log details.");
+		File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),
+				"fitmi_logs.txt");
+		if (!file.exists() || !file.canRead()) {
+			return;
+		}
+		Uri uri = Uri.fromFile(file);
+		emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+		startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
+
+
 	      
-		 String[] TO = {"info@fitmi.com"};
-	      String[] CC = {""};
-	      Intent emailIntent = new Intent(Intent.ACTION_SEND);  	      
-	      emailIntent.setData(Uri.parse("mailto:"));
-	      emailIntent.setType("text/plain");
-	     // emailIntent.setType("message/rfc822");	 
-	      emailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
-	      emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-	      emailIntent.putExtra(Intent.EXTRA_CC, CC);
-	      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "FitMi App Support");
-	      emailIntent.putExtra(Intent.EXTRA_TEXT, "");	   
-	      
-	      try {
-	         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-	         
-	      }
-	      catch (android.content.ActivityNotFoundException ex) {
-	         Toast.makeText(getActivity(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
-	      }
+//		 String[] TO = {"info@fitmi.com"};
+//	      String[] CC = {""};
+//	      Intent emailIntent = new Intent(Intent.ACTION_SEND);
+//	      emailIntent.setData(Uri.parse("mailto:"));
+//	      emailIntent.setType("text/plain");
+//	     // emailIntent.setType("message/rfc822");
+//	      emailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+//	      emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+//	      emailIntent.putExtra(Intent.EXTRA_CC, CC);
+//	      emailIntent.putExtra(Intent.EXTRA_SUBJECT, "FitMi App Support");
+//	      emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+//
+//	      try {
+//	         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+//
+//	      }
+//	      catch (android.content.ActivityNotFoundException ex) {
+//	         Toast.makeText(getActivity(), "There is no email client installed.", Toast.LENGTH_SHORT).show();
+//	      }
 	   }
 }

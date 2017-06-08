@@ -1,13 +1,9 @@
 package com.fitmi.fragments;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
@@ -27,14 +23,8 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-import com.callback.UserListCallback;
-import com.db.DatabaseHelper;
-import com.db.modules.RememberMeData;
 import com.db.modules.UserInfoModule;
 import com.fitmi.R;
-import com.fitmi.SplashActivity;
-import com.fitmi.activitys.SignInActivity;
-import com.fitmi.adapter.SingleRowDateListAdapter;
 import com.fitmi.adapter.UserListAdapter;
 import com.fitmi.dao.UserInfoDAO;
 import com.fitmi.utils.Constants;

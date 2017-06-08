@@ -4,11 +4,16 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.InputType;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dialog.Alert;
+import com.db.DatabaseHelper;
+import com.db.modules.SignUpModule;
 import com.dts.classes.JSONParser;
 import com.fitmi.R;
 import com.ssl.MySSLSocketFactory;
@@ -47,48 +52,92 @@ import java.util.List;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-/**
- * Created by harmanpreet on 28/3/17.
- */
-public class ForgotPassword extends BaseActivity {
 
-    @InjectView(R.id.editText2)
-    EditText editText2;
+public class ResetPasswordActivity extends BaseActivity {
 
+
+    DatabaseHelper databaseObject;
+
+    @InjectView(R.id.OldPassword)
+    EditText Email;
+
+    @InjectView(R.id.NewPassword)
+    EditText NewPassword;
+
+    @InjectView(R.id.ConfirmPassword)
+    EditText ConfirmPassword;
+
+    @InjectView(R.id.Save_ChangePasswordActivity)
+    Button Save_ChangePasswordActivity;
+
+    String newPass = "", conPass = "", email = "baljinder.impinge@gmail.com";
     ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_forgot_password);
+        setContentView(R.layout.activity_change_password);
+
+        databaseObject = new DatabaseHelper(ResetPasswordActivity.this);
+        try {
+            databaseObject.createDatabase();
+            databaseObject.openDatabase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         prepareKnives();
+
         pDialog = new ProgressDialog(this);
+        if(getIntent()!=null)
+            email=getIntent().getStringExtra("email_address");
+        Email.setText(email);
+        Email.setInputType(InputType.TYPE_CLASS_TEXT);
+        Email.setEnabled(false);
+
+        Save_ChangePasswordActivity.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+
+                TextView[] views = {NewPassword, ConfirmPassword};
+                String[] msg = {"New password cannot be blank!", "Confirm password cannot be blank!"};
+
+                if (!mCommonFunction.validateAllFields(views, msg)) {
+                    return;
+                }
+
+                newPass = NewPassword.getText().toString();
+                conPass = ConfirmPassword.getText().toString();
+
+                if (!newPass.equalsIgnoreCase(conPass)) {
+                    Toast.makeText(ResetPasswordActivity.this, "Confirm password is not match with new password", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                AsyncResetpassword asyncForgetpassword = new AsyncResetpassword(JSONParser.webserviceResetPass);
+                asyncForgetpassword.execute("exe");
+
+
+            }
+        });
+
+
     }
 
-    @OnClick(R.id.Cancel)
-    public void cancel() {
-        onBackPressed();
-    }
 
-    @OnClick(R.id.Send)
-    public void send() {
-        String valemail = editText2.getText().toString();
-        AsyncForgetpassword asyncForgetpassword = new AsyncForgetpassword(JSONParser.webserviceSendEmail, valemail);
-        asyncForgetpassword.execute("exe");
-    }
-
-    private class AsyncForgetpassword extends AsyncTask<String, Void, String> {
+    private class AsyncResetpassword extends AsyncTask<String, Void, String> {
 
         String JSON_URL;
         JSONObject holder = new JSONObject();
-        String email;
 
-        public AsyncForgetpassword(String url, String email) {
+
+        public AsyncResetpassword(String url) {
             // TODO Auto-generated constructor stub
             JSON_URL = url;
 
-            this.email = email;
         }
 
         @Override
@@ -123,6 +172,8 @@ public class ForgotPassword extends BaseActivity {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("email_address",
                     email));
+            nameValuePairs.add(new BasicNameValuePair("password",
+                    newPass));
             try {
                 httpost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
@@ -147,18 +198,19 @@ public class ForgotPassword extends BaseActivity {
         @Override
         protected void onPostExecute(String result) {
             pDialog.dismiss();
-            Log.e("AsyncForgetpassword ", result);
 
             try {
                 JSONObject jsonObject = new JSONObject(String.valueOf(Html.fromHtml(result)));
 
                 String status = jsonObject.optString("status");
                 if (status.equalsIgnoreCase("true")) {
-                    Alert.showAlertForgotPass(ForgotPassword.this, "Please check your email. An email has been sent to you with a code and a link.", mCommonFunction);
-                }
-                else
-                {
-                    Toast.makeText(ForgotPassword.this, "Error Occured. Please Try again!", Toast.LENGTH_SHORT).show();
+
+                    SignUpModule.changePassword(newPass, databaseObject);
+
+                    Toast.makeText(ResetPasswordActivity.this, "Your password has been changed successfully.", Toast.LENGTH_SHORT).show();
+                    mCommonFunction.showIntent(SignInActivity.class);
+                } else {
+                    Toast.makeText(ResetPasswordActivity.this, "Error Occured. Please Try again!", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (JSONException e) {
@@ -167,6 +219,7 @@ public class ForgotPassword extends BaseActivity {
             }
         }
     }
+
     public DefaultHttpClient getNewHttpClient() {
         try {
             KeyStore trustStore = KeyStore.getInstance(KeyStore
@@ -195,4 +248,18 @@ public class ForgotPassword extends BaseActivity {
             return new DefaultHttpClient();
         }
     }
+
+
+    @OnClick(R.id.Save_ChangePasswordCancel)
+    public void cliclCancel() {
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+    }
+
 }
+

@@ -74,6 +74,7 @@ public class ChatFragment extends BaseFragment{
 
 		WebSettings settings = webViewChat.getSettings();
 		settings.setJavaScriptEnabled(true);
+		settings.setDomStorageEnabled(true);
 		webViewChat.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 		  
 	        if (Build.VERSION.SDK_INT >= 19) {

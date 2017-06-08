@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ import com.dts.utils.Constants;
 
 import com.fitmi.R;
 
-public class BaseActivity extends Activity implements OnScrollListener {
+public class BaseActivity extends AppCompatActivity implements OnScrollListener {
 	
 	
 	public static String __activityId="0";

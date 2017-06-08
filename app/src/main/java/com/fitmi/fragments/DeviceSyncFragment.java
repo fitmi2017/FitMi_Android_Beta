@@ -38,7 +38,6 @@ import com.db.modules.WeightLogModule;
 
 import com.fitmi.R;
 import com.fitmi.activitys.BaseActivity;
-import com.fitmi.activitys.DeviceSyncService;
 import com.fitmi.activitys.TabActivity;
 import com.fitmi.dao.UserInfoDAO;
 import com.fitmi.dao.WeightLogDAO;
@@ -49,16 +48,7 @@ import com.fitmi.utils.interFragmentScaleCommunicator;
 import com.lifesense.ble.LsBleManager;
 import com.lifesense.ble.PairCallback;
 import com.lifesense.ble.ReceiveDataCallback;
-import com.lifesense.ble.SearchCallback;
-import com.lifesense.ble.bean.BloodPressureData;
-import com.lifesense.ble.bean.KitchenScaleData;
-import com.lifesense.ble.bean.LsDeviceInfo;
-import com.lifesense.ble.bean.PedometerData;
-import com.lifesense.ble.bean.WeightData_A2;
-import com.lifesense.ble.bean.WeightData_A3;
-import com.lifesense.ble.bean.WeightUserInfo;
-import com.lifesense.ble.commom.BroadcastType;
-import com.lifesense.ble.commom.DeviceType;
+
 import com.squareup.picasso.Picasso;
 
 public class DeviceSyncFragment extends BaseFragment {
@@ -256,7 +246,7 @@ public class DeviceSyncFragment extends BaseFragment {
         });
 
         if(Constants.isSync)
-            setText();
+            setText(true);
 
         return view;
     }
@@ -327,64 +317,54 @@ public class DeviceSyncFragment extends BaseFragment {
     }
 
 
-    private void setText() {
+    private void setText(final boolean connected) {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
-                Constants.isSync = true;
-                String sourceString = "<b> Congratulations!</b> You have successfully synced your device.";
-                congratulationsText.setText(Html.fromHtml(sourceString));
-                congratulationsText.setVisibility(View.VISIBLE);
-                deviceSyncStatus.setText("Synced");
-                deviceSyncImg.setVisibility(View.GONE);
-                GetStartedText.setText("Get Started");
-                GetStartedText.setBackgroundColor(getResources().getColor(R.color.royal_blue));
-                System.out.println("setText setText");
+                if(connected) {
+                    Constants.isSync = true;
+                    String sourceString = "<b> Congratulations!</b> You have successfully synced your device.";
+                    congratulationsText.setText(Html.fromHtml(sourceString));
+                    congratulationsText.setVisibility(View.VISIBLE);
+                    deviceSyncStatus.setText("Synced");
+                    deviceSyncImg.setVisibility(View.GONE);
+                    GetStartedText.setText("Get Started");
+                    GetStartedText.setBackgroundColor(getResources().getColor(R.color.royal_blue));
+                    System.out.println("setText setText");
 	/*        	Toast.makeText(getActivity(), "setText Working",Toast.LENGTH_LONG ).show();
 	        	((TabActivity) getActivity()).resetTabs();
 				((TabActivity) getActivity()).homeLinear
 						.setBackgroundColor(getResources().getColor(
 								R.color.royal_blue));
 				((TabActivity) getActivity())._mViewPager.setCurrentItem(0);*/
+                }
+                else{
+                    Constants.isSync = false;
+                    congratulationsText.setVisibility(View.GONE);
+                    deviceSyncStatus.setText("Not Synced");
+                    deviceSyncImg.setVisibility(View.VISIBLE);
+                    GetStartedText.setText("Cancel");
+                    GetStartedText.setBackgroundColor(getResources().getColor(R.color.home_pink_select_dark));
+                }
             }
         });
     }
-
-    private BroadcastReceiver activityReceiver = new BroadcastReceiver() {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            String _status = intent.getStringExtra("success");
-            if (_status.equalsIgnoreCase("0")) {
-                Toast.makeText(getActivity(),
-                        "Device not sync !", Toast.LENGTH_SHORT)
-                        .show();
-            } else {
-                setText();
-            }
-		/*	Toast.makeText(getActivity(),
-					"received message in activity..!", Toast.LENGTH_SHORT)
-					.show();*/
-        }
-    };
 
 
     private BroadcastReceiver scaleConnected = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            setText();
+            setText(true);
         }
     };
 
-
-    private void sendBroadcast() {
-        Intent new_intent = new Intent();
-        new_intent.setAction(DeviceSyncService.ACTION_FROM_ACTIVITY);
-        new_intent.putExtra("scaleType", _scaleType);
-        getActivity().sendBroadcast(new_intent);
-    }
+    private BroadcastReceiver scaleDisConnected = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            setText(false);
+        }
+    };
 
     @Override
     public void onResume() {
@@ -392,6 +372,11 @@ public class DeviceSyncFragment extends BaseFragment {
         if (scaleConnected != null) {
             IntentFilter intentFilter = new IntentFilter(Constants.ACTION_SCALE_SUCCESSFULLY_CONNECTED);
             getActivity().registerReceiver(scaleConnected, intentFilter);
+        }
+
+        if (scaleDisConnected != null) {
+            IntentFilter intentFilter = new IntentFilter("DeviceDisconnected");
+            getActivity().registerReceiver(scaleDisConnected, intentFilter);
         }
 
         super.onResume();
@@ -402,6 +387,8 @@ public class DeviceSyncFragment extends BaseFragment {
         // TODO Auto-generated method stub
         try {
             getActivity().unregisterReceiver(scaleConnected);
+            getActivity().unregisterReceiver(scaleDisConnected);
+
         } catch (Exception a) {
             a.printStackTrace();
         }

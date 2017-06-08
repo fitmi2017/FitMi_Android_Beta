@@ -749,8 +749,8 @@ public class HomeFragment extends BaseFragment implements NotificationTotalCalor
 			Menu2.setVisibility(View.VISIBLE);
 			Menu3.setVisibility(View.VISIBLE);
 			Menu4.setVisibility(View.VISIBLE);
-			Menu5.setVisibility(View.VISIBLE);
-			Menu6.setVisibility(View.VISIBLE);
+			Menu5.setVisibility(View.GONE);
+			Menu6.setVisibility(View.GONE);
 
 			Menu1.setImageResource(srcImg[0]);
 			Menu2.setImageResource(srcImg[1]);

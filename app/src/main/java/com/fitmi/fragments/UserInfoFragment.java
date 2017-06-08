@@ -45,6 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -52,7 +53,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.db.DatabaseHelper;
-import com.db.modules.RememberMeData;
+import com.fitmi.dao.RememberMeData;
 import com.db.modules.UnitModule;
 import com.db.modules.UserInfoModule;
 import com.dts.classes.AsyncTaskListener;
@@ -68,6 +69,9 @@ import com.fitmi.utils.Constants;
 import com.fitmi.utils.HandelOutfemoryException;
 import com.fitmi.utils.SaveSharedPreferences;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -252,6 +256,8 @@ public class UserInfoFragment extends BaseFragment {
     FrameLayout frameCalorySet;
 
     RememberMeData calValueShared;
+    RememberMeData rememberMe;
+    Bitmap mBitmap=null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -260,6 +266,7 @@ public class UserInfoFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_user_info, null);
 
+        rememberMe = SaveSharedPreferences.getLoginDetail(getActivity());
 
         bundle = this.getArguments();
 
@@ -988,7 +995,7 @@ public class UserInfoFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == IMAGE_PICKER_SELECT && resultCode == Activity.RESULT_OK) {
             TabActivity activity = (TabActivity) getActivity();
-            Bitmap bitmap = getBitmapFromCameraData(data, activity);
+            mBitmap = getBitmapFromCameraData(data, activity);
             //profileImage.setImageBitmap(bitmap);
 
             setFullImageFromFilePath(selectPicturePath, profileImage);
@@ -1101,7 +1108,7 @@ public class UserInfoFragment extends BaseFragment {
         bmOptions.inJustDecodeBounds = false;
         bmOptions.inSampleSize = scaleFactor;
         bmOptions.inPurgeable = true;
-        Bitmap bitmap = BitmapFactory.decodeFile(imagePath, bmOptions);
+        mBitmap = BitmapFactory.decodeFile(imagePath, bmOptions);
         //	imageView.setImageBitmap(bitmap);
         Picasso.with(getActivity()).load("file:" + imagePath).noFade().resize(80, 80).centerCrop().into(imageView);
     }
@@ -1200,6 +1207,7 @@ public class UserInfoFragment extends BaseFragment {
 
         String date = day.getText().toString() + "/" + month.getText().toString() + "/" + year.getText().toString();
 
+        userInfoData.setProfileId(Constants.USER_ID);
         userInfoData.setUserId(Constants.USER_ID);
         userInfoData.setFirstName(firstName.getText().toString());
         userInfoData.setLastName(lastName.getText().toString());
@@ -1226,8 +1234,7 @@ public class UserInfoFragment extends BaseFragment {
             SaveSharedPreferences.saveProfileID(getActivity(), Constants.PROFILE_ID);
 
         } else {
-            UserInfoModule.insertUserInformation(userInfoData, databaseObject);
-
+            UserInfoModule.insertUserInformationProfileLogin(userInfoData, databaseObject);
             userProfileId = UserInfoModule.getProfileId(databaseObject);
             Constants.PROFILE_ID = userProfileId;
             SaveSharedPreferences.saveProfileID(getActivity(), Constants.PROFILE_ID);
@@ -1347,6 +1354,20 @@ public class UserInfoFragment extends BaseFragment {
             unitModel.setUnitLog(unitDataBp);
             unitModel.setUnitLog(unitDataFood_Weight);
 
+
+            if(Constants.isInternetPresent(getActivity()))
+            {
+//                showProgressMessage(getResources().getString(R.string.app_name),
+//                        "Please wait......");
+                updateUserOnServer(Constants.Access_token,"update",userInfoData);
+            }
+
+            else
+            {
+                Toast.makeText(getActivity(),"Please check your internet connection",Toast.LENGTH_LONG).show();
+            }
+
+
         } else {
 
             UserInfoModule.insertCaloryBaseline(baseLineData, databaseObject);
@@ -1399,7 +1420,6 @@ public class UserInfoFragment extends BaseFragment {
 
             }
 
-
             Constants.gunitfw = 0;
 
             unitDataFood_Weight = new UnitItemDAO();
@@ -1409,9 +1429,7 @@ public class UserInfoFragment extends BaseFragment {
             unitDataFood_Weight.setType("food_weight");
             unitDataFood_Weight.setUnitId(String.valueOf(7));
 
-
             Constants.gunitbp = 0;
-
 
             unitDataBp = new UnitItemDAO();
 
@@ -1425,17 +1443,158 @@ public class UserInfoFragment extends BaseFragment {
             unitModel.setUnitLog(unitDataWeight);
             unitModel.setUnitLog(unitDataBp);
             unitModel.setUnitLog(unitDataFood_Weight);
+
+//            if(Constants.isInternetPresent(getActivity()))
+//                saveUserDetails(JSONParser.HOST_URL_DYNAMIC + "index.php/put/user/save_profile", userInfoData);
+//            else
+//                Toast.makeText(getActivity(),"Please check your internet connection",Toast.LENGTH_LONG).show();
+
+
         }
 
+
+
 //send value here
-        saveUserDetails(JSONParser.HOST_URL_DYNAMIC + "fitmiwebservice/index.php/put/user/save_profile", userInfoData);
+//        saveUserDetails(JSONParser.HOST_URL_DYNAMIC + "index.php/put/user/save_profile", userInfoData);
         System.out.println("Intake===" + IntakeVal + "===Burned===" + BurnedVal + "===BMR===" + BMRVal);
+
+//        saveUserOnServer(Constants.Access_token,"update",userInfoData);
 
 
     }
 
 
-    public int getDiffYears() {//Date first, Date last
+    private void updateUserOnServer(final String acc_token, final String action, final UserInfoDAO userInfoData) {
+
+        //	Json_Url = "http://192.168.1.34/WS/check.php/WS/check.php";
+//        Log.e("JSON URZL", Json_Url);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://api.fitmi.com/index.php/authentication/user_profile?",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.e("response using volley", response.toString());
+
+                        hideProgressDialog();
+
+                        imagePickClick = 0;
+                        FragmentTransaction transaction = getFragmentManager()
+                                .beginTransaction();
+                        getFragmentManager().popBackStack(null,
+                                FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                        transaction.add(R.id.root_profile_frame, new UserProfileFragment(),
+                                "UserProfileFragment");
+                        transaction.commit();
+
+                        //avinash
+                        try {
+
+
+                            if (switchOn.getText().toString().equalsIgnoreCase("ON")) {
+                                caloryIntake = userDb.getCaloryTake();
+
+                            } else {
+
+
+                                caloryIntake = editTextCaloryUpdate.getText().toString();
+                            }
+                            //	caloryIntake = editTextCaloryUpdate.getText().toString();
+                            userDb.updateCaloryTake(caloryIntake);
+                            //Toast.makeText(getActivity(), "Calory updated",
+                            //			Toast.LENGTH_LONG).show();
+
+                        } catch (Exception a) {
+                            a.printStackTrace();
+
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        hideProgressDialog();
+                        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("token", acc_token);
+                params.put("action", action);
+                params.put("user_id", rememberMe.getUserId());
+
+//                params.put("email_address", Constants.LOGIN_MAIL_ID);
+//                params.put("password", "12345678");
+
+                params.put("first_name", userInfoData.getFirstName());
+                params.put("last_name", userInfoData.getLastName());
+                params.put("gender",  userInfoData.getGender());
+                params.put("height_ft",  userInfoData.getHeightFt());
+                params.put("height_in",  userInfoData.getHeightInc());
+                params.put("weight",  userInfoData.getWeight());
+
+                if (txtWeight.getText().toString().equalsIgnoreCase("Lbs")) {
+                    params.put("weight_units", "lbs");
+                } else {
+                    if (Constants.gunitwt == 0) {
+                        params.put("weight_units", "kg");
+
+                    } else {
+                        params.put("weight_units", "lbs");
+                    }
+                }
+
+
+
+                if (txtHeight.getText().toString().equalsIgnoreCase("Feet"))
+                {
+                    params.put("height_units",  "Feet");
+                }
+                else
+                {
+                    params.put("height_units",  "Cm");
+                }
+                params.put("date_of_birth", userInfoData.getDateOfBirth());
+                params.put("activity_level", userInfoData.getActivityLevel());
+                params.put("daily_calorie_intake", userInfoData.getDailyCaloryIntake());
+
+                if (imagePickClick == 1) {
+                    params.put("picture", Constants.getBase64String(mBitmap));
+                }
+//                else
+//                {
+//                    imagePickClick = 0;
+//                    params.put("picture", userInfoData.getPicturePath());
+//                }
+                params.put("food_weight","");
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders()
+                    throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(8000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(stringRequest);
+    }
+
+
+    public int getDiffYears() {
+
+        //Date first, Date last
 		/*Calendar a = getCalendar(first);
 		Calendar b = getCalendar(last);
 		int diff = b.get(b.YEAR) - a.get(a.YEAR);
@@ -2100,11 +2259,13 @@ public class UserInfoFragment extends BaseFragment {
                     public void onErrorResponse(VolleyError error) {
                         //   Toast.makeText(getActivity(),"Error ",Toast.LENGTH_LONG).show();
                         hideProgressDialog();
+                        Toast.makeText(getActivity(),"Error occured, Please try again later!",Toast.LENGTH_LONG).show();
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
+
                 Log.e("access_key", Constants.Access_key);
                 Log.e("users_id", Constants.USER_ID);
                 Log.e("username", Constants.LOGIN_MAIL_ID);

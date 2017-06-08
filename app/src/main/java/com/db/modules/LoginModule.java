@@ -13,15 +13,8 @@ public class LoginModule {
 	{
 		SQLiteDatabase db = helper.getWritableDatabase();
 
-		/*String queryString = "SELECT id, email_address, password, active, deleted FROM users WHERE email_address = '" +signupData.getEmailAddress()+"' AND password = '"+signupData.getPassword()+"'  AND active = 1 AND deleted = 0";
-
-         db.execSQL(queryString);
-
-    	db.close();*/
 
 		String queryString = "SELECT id, email_address, password, active, deleted FROM users WHERE email_address = ? AND password = ?";
-
-
 
 		Cursor c = db.rawQuery(queryString, new String[] { signupData.getEmailAddress(), signupData.getPassword()});
 

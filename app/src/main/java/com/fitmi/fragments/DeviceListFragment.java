@@ -1,8 +1,5 @@
 package com.fitmi.fragments;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,10 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+import android.widget.Toast;
 
 import com.db.DatabaseHelper;
 import com.db.modules.UserInfoModule;
@@ -36,6 +30,13 @@ import com.fitmi.dao.UserInfoDAO;
 import com.fitmi.utils.Constants;
 import com.fitmi.utils.HandelOutfemoryException;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class DeviceListFragment extends BaseFragment {
 
@@ -169,7 +170,7 @@ public class DeviceListFragment extends BaseFragment {
                 //					}
                 //temp hidden by avinash
             /*	if(arg2==0){
-		
+
 					bundle.putString("userName",
 							userInfo.getFirstName() + " " + userInfo.getLastName());
 					bundle.putString("deviceName", "WeightScale");
@@ -230,11 +231,66 @@ public class DeviceListFragment extends BaseFragment {
             }
         });
 
+        if (scaleConnected != null) {
+            IntentFilter intentFilter = new IntentFilter(Constants.ACTION_SCALE_SUCCESSFULLY_CONNECTED);
+            getActivity().registerReceiver(scaleConnected, intentFilter);
+        }
+
+        if (scaleDisConnected != null) {
+            IntentFilter intentFilter = new IntentFilter("DeviceDisconnected");
+            getActivity().registerReceiver(scaleDisConnected, intentFilter);
+        }
+
         return view;
 
 
-
     }
+
+    private BroadcastReceiver scaleConnected = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            deviceNames.clear();
+            DeviceListDAO dao = new DeviceListDAO();
+            dao.setDeviceName("Food Scale");
+
+            dao.setSyncType("Synced");
+
+            deviceNames.add(dao);
+            adapter.notifyDataSetChanged();
+//            Toast.makeText(getActivity(), "Connected -->receiver to change the text", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private BroadcastReceiver scaleDisConnected = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+//            Toast.makeText(getActivity(), "deisconnected receiver to change the text", Toast.LENGTH_SHORT).show();
+
+            deviceNames.clear();
+            DeviceListDAO dao = new DeviceListDAO();
+            dao.setDeviceName("Food Scale");
+
+            dao.setSyncType("Not Synced");
+
+            deviceNames.add(dao);
+            adapter.notifyDataSetChanged();
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        // TODO Auto-generated method stub
+        try {
+            getActivity().unregisterReceiver(scaleConnected);
+            getActivity().unregisterReceiver(scaleDisConnected);
+
+        } catch (Exception a) {
+            a.printStackTrace();
+        }
+        super.onDestroy();
+    }
+
 
     @OnClick(R.id.backLiner)
     public void back() {

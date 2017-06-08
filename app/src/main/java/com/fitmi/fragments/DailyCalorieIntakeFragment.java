@@ -8,21 +8,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
 import com.callback.NotificationCalorieIntake;
-import com.callback.NotificationSleep;
-import com.db.modules.RememberMeData;
+import com.fitmi.dao.RememberMeData;
 import com.db.modules.UserInfoModule;
 import com.fitmi.R;
 import com.fitmi.utils.Constants;

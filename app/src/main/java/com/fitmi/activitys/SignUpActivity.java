@@ -144,6 +144,12 @@ public class SignUpActivity extends BaseActivity {
 			return;
 		}
 
+		if (!(password.getText().length() >7)) {
+			mCommonFunction
+					.showToastMessageShort("Password should be greater then 7 characters!");
+			return;
+		}
+
 		mCommonFunction.dismissKeyboard(password);	
 
 		 register();

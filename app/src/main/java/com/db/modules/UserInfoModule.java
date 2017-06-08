@@ -234,11 +234,7 @@ public class UserInfoModule extends BaseModule {
 		cu.close(); */
 	}
 
-	/**
-	 * Calory update
-	 * @param helper
-	 * @return
-	 */
+
 	public String getCaloryTake()
 	{
 		//SQLiteDatabase db = helper.getReadableDatabase();	
@@ -266,7 +262,7 @@ public class UserInfoModule extends BaseModule {
 				"UPDATE fitmi_calorie_baseline SET total_intake ='" + newCalory
 				+ "' WHERE user_profile_id = ?";
 
-		Log.e("updateCaloryTake user_profile_id",args[0].toString());
+		Log.e("updateCaloryTake",args[0].toString());
 		Cursor cu = db.rawQuery(query, args);
 		cu.moveToFirst();
 		cu.close();
